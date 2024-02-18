@@ -1,0 +1,19 @@
+.bg-default-dark {
+    background-color: #111315;
+}
+
+.bg-default-dark-light {
+    background-color: #1e2123;
+}
+
+.text-default-dark {
+    color: #DEE4EA;
+}
+
+.border-default-dark {
+    border-color: #596773;
+}
+
+.h-10p {
+    height: 10%;
+}
