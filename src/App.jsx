@@ -24,7 +24,7 @@ function App() {
       <div className="flex flex-row">
         <div className="min-w-64 flex flex-col gap-2.5 h-screen w-64 border-r border-default-dark p-2">
           <div className="border-b border-default-dark text-3xl font-semibold pb-2 text-center">
-            <img className="w-3/5 ml-auto mr-auto" src={no_text}></img>
+            <img alt='PythSource Logo' className="w-3/5 ml-auto mr-auto" src={no_text}></img>
             PythSource
           </div>
           <button
@@ -45,13 +45,14 @@ function App() {
           <div className="flex flex-col gap-1 w-50 h-10p border-t border-default-dark p-2">
             PythSource 2018 - {new Date().getFullYear()}
             <div className="flex flex-row gap-1">
-              <a className="text-sky-300" href="https://github.com/pythsource">
+              <a aria-label='GitHub' className="text-sky-300" href="https://github.com/pythsource">
                 <FaGithub />
               </a>
-              <a className="text-sky-300" href="https://t.me/pythsource">
+              <a aria-label='Telegram' className="text-sky-300" href="https://t.me/pythsource">
                 <FaTelegramPlane />
               </a>
               <a
+                aria-label='YouTube'
                 className="text-sky-300"
                 href="https://www.youtube.com/channel/UCgy0pqFWwiXrVxU8KXgb1RQ"
               >
