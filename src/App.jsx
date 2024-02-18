@@ -34,7 +34,7 @@ function App() {
                     className={'flex justify-between footer bg-slate-800 absolute bottom-0 border-2 p-1.5 w-full border-slate-600'}><span
                     className={'font-mono'}>PythSource © 2018 — {new Date().getFullYear()}</span>
                     <div className={'flex gap-2'}><a className={'text-blue-300 text-2xl'}
-                                                              href={'https://t.me/pythsource'}><FaTelegram/></a><a
+                                                     href={'https://t.me/pythsource'}><FaTelegram/></a><a
                         className={'text-blue-300 text-2xl'}
                         href={'https://github.com/pythsource'}><FaGithub/></a><a className={'text-blue-300 text-2xl'}
                                                                                  href={'https://www.youtube.com/channel/UCgy0pqFWwiXrVxU8KXgb1RQ'}><FaYoutube/></a>
