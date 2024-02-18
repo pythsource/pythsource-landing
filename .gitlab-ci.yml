@@ -1,0 +1,25 @@
+stages:
+  - build
+  - lint
+
+build:
+  tags:
+    - host
+  image: node:latest
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    when: on_success
+
+lint:
+  tags:
+    - host
+  image: node:latest
+  stage: lint
+  script:
+    - npm install
+    - npm run lint
