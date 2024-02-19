@@ -1,4 +1,4 @@
-import ProjectCard from './components/ProjectCard'
+import ProjectCard, { ProjectStatus } from './components/ProjectCard'
 
 export default function Projects() {
   return (
@@ -16,14 +16,14 @@ export default function Projects() {
             <ProjectCard
               imageUrl="https://upload.wikimedia.org/wikipedia/ru/d/db/Citadel_1_%28Half-Life_2_Episode_One%29.jpg"
               projectName="Global Information Repository"
-              description="A wiki for Data Point, taken from the perspective of the ITREWN."
-              links="TBA"
+              description="A wiki for Data Point, taken from ITREWN's perspective."
+              links={<ProjectStatus projStatus="tbd" />}
             />
             <ProjectCard
               imageUrl="https://upload.wikimedia.org/wikipedia/commons/f/fd/TDN-1_assault_drone_strikes_target_during_tests_in_Delaware_Bay_in_January_1943.jpg"
               projectName="Project Seen"
               description="A modification for Half-Life 2, that depicts the events of the Celas' Revolution."
-              links="TBA"
+              links={<ProjectStatus projStatus="tbd" />}
             />
           </div>
         </div>

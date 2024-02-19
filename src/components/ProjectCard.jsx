@@ -1,5 +1,26 @@
 import PropTypes from 'prop-types'
 
+export function ProjectStatus({ projStatus, date }) {
+  switch (projStatus) {
+    case 'tbd':
+      return <abbr title="To Be Decided">TBD</abbr>
+    case 'tba':
+      return <abbr title="To Be Announced">TBA</abbr>
+    case 'cancel':
+      return <p>Canceled</p>
+    case 'soon':
+      if (date) {
+        return <p>Coming {new Date(date).toLocaleDateString()}</p>
+      } else {
+        return <p>Coming Soon</p>
+      }
+  }
+}
+ProjectStatus.propTypes = {
+  projStatus: PropTypes.string.isRequired,
+  date: PropTypes.string,
+}
+
 export default function ProjectCard({
   imageUrl,
   projectName,
