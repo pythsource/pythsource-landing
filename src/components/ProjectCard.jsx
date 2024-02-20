@@ -30,13 +30,21 @@ export default function ProjectCard({
   return (
     <>
       <div
-        className={`border p-2 bg-[linear-gradient(to_bottom,rgba(17,19,21,0.5),rgba(17,19,21,1)),url('${imageUrl}')] border-default-dark rounded-lg bg-default-dark`}
+        className={
+          'flex flex-col hover:border-blue-400 transition border-b-4 p-2 border-default-dark'
+        }
+        style={{
+          background: `linear-gradient(to bottom, rgba(17, 19, 21, 0.7), rgba(17, 19, 21, 1)),
+        url('${imageUrl}')`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
       >
         <span className="text-2xl font-bold">{projectName}</span>
-        <article className="text-sm">
+        <article className="text-sm flex-grow text-balance">
           <p>{description}</p>
         </article>
-        <div className="text-center border-t border-default-dark mt-2">
+        <div className="flex flex-row justify-center border-t border-default-dark mt-2 pt-2">
           {links}
         </div>
       </div>
