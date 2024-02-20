@@ -4,7 +4,7 @@ import { FaGithub } from 'react-icons/fa'
 export default function Projects() {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 animation-appear">
         <div className="flex flex-col">
           <div className="flex flex-col border-b border-default-dark mb-2">
             <span className="text-2xl font-bold -mb-1">Data Point:</span>

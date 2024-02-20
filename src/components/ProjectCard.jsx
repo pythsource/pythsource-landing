@@ -31,7 +31,7 @@ export default function ProjectCard({
     <>
       <div
         className={
-          'flex flex-col hover:border-blue-400 transition border-b-4 p-2 border-default-dark'
+          'flex flex-col hover:border-indigo-400 transition border-b-4 p-2 border-default-dark'
         }
         style={{
           background: `linear-gradient(to bottom, rgba(17, 19, 21, 0.7), rgba(17, 19, 21, 1)),
@@ -55,5 +55,5 @@ ProjectCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   projectName: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  links: PropTypes.string.isRequired,
+  links: PropTypes.any.isRequired,
 }

@@ -17,3 +17,16 @@
 .h-5p {
   height: 5%;
 }
+
+.animation-appear {
+  animation: appear 1.5s;
+}
+
+@keyframes appear {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}

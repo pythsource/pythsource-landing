@@ -1,5 +1,4 @@
 import './App.css'
-import { FaTelegramPlane, FaGithub, FaYoutube } from 'react-icons/fa'
 import no_text from './assets/no_text.png'
 import { useState } from 'react'
 import About from './pages/About'
@@ -71,20 +70,6 @@ function App() {
           <div className="w-50 h-full p-2 bg-default-dark-light">{content}</div>
           <div className="flex flex-row justify-between w-50 h-5p border-t border-default-dark p-2">
             <i>© 2018 — {new Date().getFullYear()} PythSource</i>
-            <div className="flex flex-row gap-1">
-              <a aria-label="GitHub" href="https://github.com/pythsource">
-                <FaGithub size={23} />
-              </a>
-              <a aria-label="Telegram" href="https://t.me/pythsource">
-                <FaTelegramPlane size={23} />
-              </a>
-              <a
-                aria-label="YouTube"
-                href="https://www.youtube.com/channel/UCgy0pqFWwiXrVxU8KXgb1RQ"
-              >
-                <FaYoutube size={23} />
-              </a>
-            </div>
           </div>
         </div>
       </div>
