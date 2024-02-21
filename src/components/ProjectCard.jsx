@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types'
+import { MdCancel } from 'react-icons/md'
+import { BsThreeDots } from 'react-icons/bs'
 
 export function ProjectStatus({ projStatus, date }) {
   switch (projStatus) {
     case 'tbd':
-      return <abbr title="To Be Decided">TBD</abbr>
+      return <BsThreeDots title="To Be Decided" size={30} />
     case 'tba':
-      return <abbr title="To Be Announced">TBA</abbr>
+      return <BsThreeDots title="To Be Announced" size={30} />
     case 'cancel':
-      return <p>Canceled</p>
+      return <MdCancel title="Canceled" size={30} />
     case 'soon':
       if (date) {
         return <p>Coming {new Date(date).toLocaleDateString()}</p>
       } else {
-        return <p>Coming Soon</p>
+        return <p>Coming Soon™</p>
       }
   }
 }
@@ -21,24 +23,14 @@ ProjectStatus.propTypes = {
   date: PropTypes.string,
 }
 
-export default function ProjectCard({
-  imageUrl,
-  projectName,
-  description,
-  links,
-}) {
+export default function ProjectCard({ projectName, description, links }) {
   return (
     <>
       <div
+        id={projectName.toLowerCase().replace(/ /g, '-')}
         className={
-          'flex flex-col hover:border-indigo-400 transition border-b-4 p-2 border-default-dark'
+          'flex flex-col project-card transition-all hover:border-indigo-400 border-b-4 p-2 border-default-dark'
         }
-        style={{
-          background: `linear-gradient(to bottom, rgba(17, 19, 21, 0.7), rgba(17, 19, 21, 1)),
-        url('${imageUrl}')`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }}
       >
         <span className="text-2xl font-bold">{projectName}</span>
         <article className="text-sm flex-grow text-balance">
@@ -52,7 +44,6 @@ export default function ProjectCard({
   )
 }
 ProjectCard.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
   projectName: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   links: PropTypes.any.isRequired,

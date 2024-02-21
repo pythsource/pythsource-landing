@@ -48,26 +48,22 @@ function App() {
             </a>
           </div>
           <button
-            onClick={() => parseClick('about')}
-            className="border-b border-t border-default-dark pb-1 pt-1 hover:bg-gray-800 transition duration-100"
-          >
-            About
-          </button>
-          <button
             onClick={() => parseClick('projects')}
-            className="border-b border-t border-default-dark pb-1 pt-1 hover:bg-gray-800 transition duration-100"
+            className="border-b border-t border-default-dark pb-1 pt-1 bg-default-dark-light hover:bg-indigo-800 transition duration-100"
           >
             Projects
           </button>
           <button
             onClick={() => parseClick('contact')}
-            className="border-b border-t border-default-dark pb-1 pt-1 hover:bg-gray-800 transition duration-100"
+            className="border-b border-t border-default-dark pb-1 pt-1 bg-default-dark-light hover:bg-indigo-800 transition duration-100"
           >
             Contacts
           </button>
         </div>
         <div className="flex flex-grow flex-col h-screen">
-          <div className="w-50 h-full p-2 bg-default-dark-light">{content}</div>
+          <div className="w-50 h-full p-2 bg-default-dark-light overflow-auto">
+            {content}
+          </div>
           <div className="flex flex-row justify-between w-50 h-5p border-t border-default-dark p-2">
             <i>© 2018 — {new Date().getFullYear()} PythSource</i>
           </div>
