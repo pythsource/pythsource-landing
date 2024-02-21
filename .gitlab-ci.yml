@@ -15,7 +15,6 @@ build:
     paths:
       - dist/
     when: on_success
-  allow_failure: false
 
 lint:
   tags:
@@ -25,7 +24,6 @@ lint:
   script:
     - npm install
     - npm run lint
-  allow_failure: false
 
 deploy:
   tags:
@@ -38,8 +36,8 @@ deploy:
   stage: deploy
   environment:
     name: production
-    url: https://master.pythsource.pages.dev
+    url: https://main.pythsource.pages.dev
   script:
     - npm install
     - npm run build
-    - npx wrangler pages deploy dist/ --project-name=pythsource
+    - npx wrangler pages deploy dist/ --project-name=pythsource --branch=main
