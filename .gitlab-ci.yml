@@ -19,6 +19,7 @@ build:
 lint:
   tags:
     - host
+  needs: ['build']
   image: node:latest
   stage: lint
   script:
@@ -41,3 +42,5 @@ deploy:
     - npm install
     - npm run build
     - npx wrangler pages deploy dist/ --project-name=pythsource --branch=main
+  only:
+    - master
