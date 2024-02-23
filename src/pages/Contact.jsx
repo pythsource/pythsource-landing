@@ -1,6 +1,6 @@
-import { FaDiscord, FaGithub, FaTelegram, FaYoutube } from 'react-icons/fa'
+import { FaDiscord, FaGithub, FaGitlab, FaYoutube } from 'react-icons/fa'
 import { BiSolidGame } from 'react-icons/bi'
-import { MdEmail } from 'react-icons/md'
+import { MdEmail, MdViewKanban } from 'react-icons/md'
 import Link from '../components/Link'
 
 export default function Contact() {
@@ -10,13 +10,6 @@ export default function Contact() {
         <h1 className="text-3xl font-bold mb-2.5">Contacts</h1>
         <div className="flex gap-5 mb-2.5">
           <div className="flex justify-evenly bg-default-dark border border-default-dark w-full">
-            <div className="flex items-center gap-2.5 flex-col p-5">
-              Telegram
-              <Link
-                href="https://t.me/pythsource"
-                label={<FaTelegram size={45} />}
-              />
-            </div>
             <div className="flex items-center gap-2.5 flex-col p-5">
               ModDB
               <Link
@@ -36,6 +29,20 @@ export default function Contact() {
               <Link
                 href="https://github.com/pythsource"
                 label={<FaGithub size={45} />}
+              />
+            </div>
+            <div className="flex items-center gap-2.5 flex-col p-5">
+              GitLab
+              <Link
+                href="https://git.pythsource.com/explore"
+                label={<FaGitlab size={45} />}
+              />
+            </div>
+            <div className="flex items-center gap-2.5 flex-col p-5">
+              Project Management
+              <Link
+                href="https://issues.pythsource.com"
+                label={<MdViewKanban size={45} />}
               />
             </div>
             <div className="flex items-center gap-2.5 flex-col p-5">

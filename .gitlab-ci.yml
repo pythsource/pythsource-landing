@@ -1,7 +1,6 @@
 stages:
   - build
   - lint
-  - deploy
 
 build:
   tags:
@@ -25,22 +24,3 @@ lint:
   script:
     - npm install
     - npm run lint
-
-deploy:
-  tags:
-    - host
-  variables:
-    CLOUDFLARE_API_TOKEN: $CLOUDFLARE_API_TOKEN
-    CLOUDFLARE_ACCOUNT_ID: $CLOUDFLARE_ACCOUNT_ID
-  needs: ['build', 'lint']
-  image: node:latest
-  stage: deploy
-  environment:
-    name: production
-    url: https://pythsource.pages.dev
-  script:
-    - npm install
-    - npm run build
-    - npx wrangler pages deploy dist/ --project-name=pythsource --branch=main
-  only:
-    - master
