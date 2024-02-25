@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://pythsource.com/</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/about</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/projects</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/contacts</loc>
+    </url>
+    <url>
+        <loc>https://git.pythsource.com</loc>
+    </url>
+    <url>
+        <loc>https://issues.pythsource.com</loc>
+    </url>
+</urlset>
