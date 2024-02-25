@@ -1,6 +1,9 @@
+import { changeTitle } from '../main'
 import no_text from '/src/assets/no_text.png'
 
 export default function Home() {
+  changeTitle('', true)
+
   return (
     <>
       <div className="flex flex-col items-center gap-2 mt-16 animation-appear">

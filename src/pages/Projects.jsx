@@ -1,17 +1,20 @@
 import ProjectCard, { ProjectStatus } from '../components/ProjectCard'
 import { FaGithub } from 'react-icons/fa'
+import { changeTitle } from '../main'
 
 export default function Projects() {
+  changeTitle('Projects')
+
   return (
     <>
       <div className="flex flex-col gap-5 animation-appear">
         <div className="flex flex-col">
           <div className="flex flex-col border-b border-default-dark mb-2">
-            <span className="text-2xl font-bold -mb-1">Data Point:</span>
-            <span className="text-sm italic text-gray-400">
+            <h1 className="text-2xl font-bold -mb-1">Data Point:</h1>
+            <h2 className="text-sm italic text-gray-400">
               A universe used by PythSource to develop different multimedia
               projects. Constantly expanding.
-            </span>
+            </h2>
           </div>
           <div className="grid grid-cols-3 gap-2">
             <ProjectCard
@@ -28,11 +31,11 @@ export default function Projects() {
         </div>
         <div className="flex flex-col">
           <div className="flex flex-col border-b border-default-dark mb-2">
-            <span className="text-2xl font-bold -mb-1">World Factions:</span>
-            <span className="text-sm italic text-gray-400">
+            <h1 className="text-2xl font-bold -mb-1">World Factions:</h1>
+            <h2 className="text-sm italic text-gray-400">
               A scrapped universe, previously used by PythSource for project
               ideas.
-            </span>
+            </h2>
           </div>
           <div className="grid grid-cols-3 gap-2">
             <ProjectCard
@@ -51,7 +54,7 @@ export default function Projects() {
         </div>
         <div className="flex flex-col">
           <div className="flex flex-col border-b border-default-dark mb-2">
-            <span className="text-2xl font-bold -mb-1">Other:</span>
+            <h1 className="text-2xl font-bold -mb-1">Other:</h1>
           </div>
           <div className="grid grid-cols-3 gap-2">
             <ProjectCard

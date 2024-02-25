@@ -32,7 +32,7 @@ export default function ProjectCard({ projectName, description, links }) {
           'flex flex-col project-card transition-all hover:border-indigo-400 border-b-4 p-2 border-default-dark'
         }
       >
-        <span className="text-2xl font-bold">{projectName}</span>
+        <h1 className="text-2xl font-bold">{projectName}</h1>
         <article className="text-sm flex-grow text-balance">
           <p>{description}</p>
         </article>

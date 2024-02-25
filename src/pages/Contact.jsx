@@ -2,8 +2,11 @@ import { FaDiscord, FaGithub, FaGitlab, FaYoutube } from 'react-icons/fa'
 import { BiSolidGame } from 'react-icons/bi'
 import { MdEmail, MdViewKanban } from 'react-icons/md'
 import Link from '../components/Link'
+import { changeTitle } from '../main'
 
 export default function Contact() {
+  changeTitle('Contacts')
+
   return (
     <>
       <div className="animation-appear">
