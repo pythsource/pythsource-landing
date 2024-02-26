@@ -3,12 +3,16 @@ import no_text from './assets/images/no_text.png'
 import PropTypes from 'prop-types'
 import { FaGitlab, FaGithub } from 'react-icons/fa'
 import { MdAlternateEmail } from 'react-icons/md'
+import perlin from './assets/images/perlin.png'
 
 export default function App({ children }) {
   return (
     <>
       <div className="page-container">
-        <header className="page-header border-color-default bg-default-dark">
+        <header
+          style={{ backgroundImage: `url(${perlin})`, backgroundSize: '50%' }}
+          className="page-header border-color-default bg-default-dark"
+        >
           <a href="/" className="logo-link logo-animation">
             <img
               className="header-logo"
@@ -30,7 +34,10 @@ export default function App({ children }) {
           </div>
         </header>
         <main className="page-body">{children ?? <Outlet />}</main>
-        <footer className="page-footer border-color-default bg-default-dark text-footer">
+        <footer
+          style={{ backgroundImage: `url(${perlin})`, backgroundSize: '50%' }}
+          className="page-footer border-color-default bg-default-dark text-footer"
+        >
           <div>© {new Date().getFullYear()} PythSource</div>
           <div className="link-list_footer">
             <a href="https://git.pythsource.com/explore">

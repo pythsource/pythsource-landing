@@ -169,12 +169,9 @@ $default-text-color: #e3e3e3;
 
 .home-background {
   width: 100%;
-  background-image: url('https://cdn.discordapp.com/attachments/293011429555044354/1211733533601824908/image.png?ex=65ef45cb&is=65dcd0cb&hm=7b605983c30e059afa0b99d149c9c2843e74d8f599bfc13a1fb500bab7cba4d2&');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   height: 93.5%;
   animation: background-appear 2.5s;
+  object-fit: cover;
 }
 
 @keyframes background-appear {
