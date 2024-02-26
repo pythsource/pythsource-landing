@@ -1,42 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
-import '@fontsource-variable/source-code-pro'
-import App from './App.jsx'
-import About from './pages/About.jsx'
-import Home from './pages/Home.jsx'
-import Projects from './pages/Projects.jsx'
-import Contact from './pages/Contact.jsx'
-import NotFound from './pages/NotFound.jsx'
+import 'modern-normalize'
+import './reset.scss'
+import '@fontsource-variable/jetbrains-mono'
+import './main.scss'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import App from './app'
+import Error from './pages/error'
+import Home from './pages/home'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: (
-      <App>
-        <NotFound />
-      </App>
-    ),
+    errorElement: (<App><Error /></App>),
     children: [
       {
         path: '/',
-        element: <Home />,
-      },
-      {
-        path: 'about',
-        element: <About />,
-      },
-      {
-        path: 'projects',
-        element: <Projects />,
-      },
-      {
-        path: 'contacts',
-        element: <Contact />,
-      },
-    ],
+        element: <Home />
+      }
+    ]
   },
 ])
 
