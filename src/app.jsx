@@ -20,19 +20,19 @@ export default function App({ children }) {
             <h1 className="font-bold">PythSource</h1>
           </a>
           <div className="link-list">
-            <a href="/about" className="header-link transition">
+            <a id='about' href="/about" className="header-link transition">
               About
             </a>
-            <a href="/blog" className="header-link transition">
+            <a id='blog' href="/blog" className="header-link transition">
               Blog
             </a>
-            <a href="/projects" className="header-link transition">
+            <a id='projects' href="/projects" className="header-link transition">
               Projects
             </a>
-            <a href="/jobs" className="header-link transition">
+            <a id='jobs' href="/jobs" className="header-link transition">
               Vacancies
             </a>
-            <a href="/contacts" className="header-link transition">
+            <a id='contacts' href="/contacts" className="header-link transition">
               Contacts
             </a>
           </div>

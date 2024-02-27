@@ -7,6 +7,7 @@ $default-border-color: #252525;
 
 $default-text-color: #e3e3e3;
 $default-text-dark: #8d8d8d;
+$default-text-link: #648daf;
 
 .bg-default {
   background-color: $default-background;
@@ -43,6 +44,13 @@ $default-text-dark: #8d8d8d;
 
 .text-dark {
   color: $default-text-dark;
+}
+.text-link {
+  color: $default-text-link;
+  text-decoration: underline;
+  &:hover {
+    color: lighten($color: $default-text-link, $amount: 20);
+  }
 }
 
 .font-bold {
@@ -114,7 +122,8 @@ $default-text-dark: #8d8d8d;
   width: 2.5rem;
 }
 
-.header-link, .button-link {
+.header-link,
+.button-link {
   border-radius: 0.375rem;
   padding: 0.25rem;
   &:hover {

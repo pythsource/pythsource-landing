@@ -62,6 +62,10 @@ export const changeTitle = (pageTitle, bare = false) => {
     : (document.title = `PythSource - ${pageTitle}`)
 }
 
+export const fakeButton = (buttonId) => {
+  document.getElementById(buttonId).classList.add('bg-default-light')
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
