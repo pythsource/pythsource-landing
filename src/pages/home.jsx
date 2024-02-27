@@ -15,19 +15,19 @@ export default function Home() {
             </h1>
             <h2 className="home-subtitle">
               <TypeAnimation
-                sequence={['> Game Development', 2500, '> Software', 2500]}
+                sequence={[
+                  '> Game Development',
+                  2500,
+                  '> Web Development',
+                  2500,
+                  '> Software Development',
+                  2500,
+                ]}
                 cursor={true}
                 speed={200}
                 repeat={Infinity}
               />
             </h2>
-            <h3 className="home-subtitle">
-              <TypeAnimation
-                sequence={['> Since 2018', 1000]}
-                cursor={false}
-                speed={200}
-              />
-            </h3>
           </div>
         </div>
         <div className="home-right">

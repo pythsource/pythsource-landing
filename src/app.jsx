@@ -3,14 +3,12 @@ import no_text from './assets/images/no_text.png'
 import PropTypes from 'prop-types'
 import { FaGitlab, FaGithub } from 'react-icons/fa'
 import { MdAlternateEmail } from 'react-icons/md'
-import perlin from './assets/images/perlin.png'
 
 export default function App({ children }) {
   return (
     <>
       <div className="page-container">
         <header
-          style={{ backgroundImage: `url(${perlin})`, backgroundSize: '50%' }}
           className="page-header border-color-default bg-default-dark"
         >
           <a href="/" className="logo-link logo-animation">
@@ -25,8 +23,14 @@ export default function App({ children }) {
             <a href="/about" className="header-link transition">
               About
             </a>
+            <a href="/blog" className="header-link transition">
+              Blog
+            </a>
             <a href="/projects" className="header-link transition">
               Projects
+            </a>
+            <a href="/jobs" className="header-link transition">
+              Vacancies
             </a>
             <a href="/contacts" className="header-link transition">
               Contacts
@@ -35,7 +39,6 @@ export default function App({ children }) {
         </header>
         <main className="page-body">{children ?? <Outlet />}</main>
         <footer
-          style={{ backgroundImage: `url(${perlin})`, backgroundSize: '50%' }}
           className="page-footer border-color-default bg-default-dark text-footer"
         >
           <div>© {new Date().getFullYear()} PythSource</div>

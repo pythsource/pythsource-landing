@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import 'modern-normalize'
-import './reset.scss'
+import 'virtual:windi.css'
 import '@fontsource-variable/jetbrains-mono'
 import './main.scss'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
@@ -11,30 +10,49 @@ import Home from './pages/home'
 import About from './pages/about'
 import Projects from './pages/projects'
 import Contacts from './pages/contacts'
+import Jobs from './pages/jobs'
+import Blog from './pages/blog'
+import BlogPage from './pages/blog_page'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: (<App><Error /></App>),
+    errorElement: (
+      <App>
+        <Error />
+      </App>
+    ),
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Home />,
       },
       {
         path: '/about',
-        element: <About />
+        element: <About />,
       },
       {
         path: '/projects',
-        element: <Projects />
+        element: <Projects />,
       },
       {
         path: '/contacts',
-        element: <Contacts />
-      }
-    ]
+        element: <Contacts />,
+      },
+      {
+        path: '/jobs',
+        element: <Jobs />,
+      },
+      {
+        path: '/blog',
+        element: <Blog />,
+      },
+      {
+        path: '/blog/post/:pageName',
+        element: <BlogPage />,
+      },
+    ],
   },
 ])
 
