@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lIEbxAxjsqkWMoVwiZSJ0PLBhYAZ3YiQuRSgl80JgEPLUe+RwxQmeMiMQAz7AEZwvrYuD/yq2h31/H5Y2zvMNw==",
+  "success": true,
+  "projectFilePath": "/mnt/HDD/Development/Repositories/PythSource-Landing/api/api.csproj",
+  "expectedPackageFiles": [
+    "/home/idexv/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.1/microsoft.aspnetcore.app.ref.8.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
