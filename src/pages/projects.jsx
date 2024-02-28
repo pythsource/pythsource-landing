@@ -85,7 +85,7 @@ export default function Projects() {
           </div>
           <div className="flex gap-1.5 flex-col">
             <div className="border-b border-color-default border-l-5 pl-2.5">
-              <h1 className="text-2xl">Misc. Projects</h1>
+              <h1 className="text-2xl">Miscellaneous Projects</h1>
               <h2 className="text-dark">
                 Projects that don't fit into any other categories.
               </h2>

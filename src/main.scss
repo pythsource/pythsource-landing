@@ -8,6 +8,7 @@ $default-border-color: #252525;
 $default-text-color: #e3e3e3;
 $default-text-dark: #8d8d8d;
 $default-text-link: #648daf;
+$default-text-highlight: #e0b98d;
 
 .bg-default {
   background-color: $default-background;
@@ -48,9 +49,13 @@ $default-text-link: #648daf;
 .text-link {
   color: $default-text-link;
   text-decoration: underline;
+  transition: color 0.1s ease-in;
   &:hover {
     color: lighten($color: $default-text-link, $amount: 20);
   }
+}
+.text-highlight {
+  color: $default-text-highlight;
 }
 
 .font-bold {
@@ -227,6 +232,17 @@ $default-text-link: #648daf;
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+.fancy-link-animation {
+  a {
+    transition: color 0.3s ease-in, transform 0.3s ease-in;
+    color: $default-text-highlight;
+    &:hover {
+      transform: translateX(0.5rem);
+      color: $default-text-link;
+    }
   }
 }
 

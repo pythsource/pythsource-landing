@@ -124,13 +124,8 @@ export default function About() {
           <h2 className="text-2xl">
             Active since{' '}
             <span className="underline">
-              <TypeAnimation
-                sequence={['2018', 1000]}
-                cursor={false}
-                speed={400}
-              />
+              <TypeAnimation sequence={['2018.', 1000]} speed={400} />
             </span>
-            .
           </h2>
         </div>
         <div className="flex flex-col mt-1/4">

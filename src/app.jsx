@@ -30,7 +30,7 @@ export default function App({ children }) {
               Projects
             </a>
             <a id='jobs' href="/jobs" className="header-link transition">
-              Vacancies
+              Jobs
             </a>
             <a id='contacts' href="/contacts" className="header-link transition">
               Contacts
