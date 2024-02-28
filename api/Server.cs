@@ -11,9 +11,20 @@ internal abstract class Server
 		var builder = WebApplication.CreateBuilder();
 		builder.Services.AddEndpointsApiExplorer();
 		builder.Services.AddControllers();
+		builder.Services.AddCors(_options =>
+		{
+			_options.AddPolicy(name: "MainCORSPolicy",
+				_policy =>
+				{
+					_policy.WithOrigins("https://pythsource.com",
+						"https://www.pythsource.com",
+						"http://localhost:5173");
+				});
+		});
 		
 		var app = builder.Build();
 		app.MapControllers();
+		app.UseCors("MainCORSPolicy");
 		app.Run();
 	}
 }

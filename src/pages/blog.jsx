@@ -7,25 +7,6 @@ export default function Blog() {
   const [blogPosts, setBlogPosts] = useState('TODO: API')
   changeTitle('Blog')
 
-  const populatePosts = async () => {
-    try {
-      const response = await fetch(
-        'https://api.pythsource.com/landing/index_blogs',
-        {
-          method: 'GET'
-        }
-      )
-
-      var responseBody = await response.json()
-    } catch (error) {
-      
-    }
-  }
-
-  useEffect(() => {
-    
-  }, [])
-
   return (
     <>
       <div className="flex bg-default w-full h-full border border-color-default rounded-xl">
