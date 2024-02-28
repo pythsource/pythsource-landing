@@ -246,6 +246,17 @@ $default-text-highlight: #e0b98d;
   }
 }
 
+.job-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background-color: #47995b;
+  border: 1px solid #5cbb7b;
+  padding: 0.125rem;
+  color: $default-text-color;
+  margin-left: 0.5rem;
+}
+
 @media (min-width: 768px) {
   .page-container {
     font-size: 1rem;

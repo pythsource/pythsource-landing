@@ -1,6 +1,7 @@
 import { changeTitle } from '../main'
 import { useEffect, useState } from 'react'
 import JobListing from '../components/job_listing'
+import { MdNewReleases } from 'react-icons/md'
 
 export default function Jobs() {
   changeTitle('Jobs')
@@ -67,6 +68,15 @@ export default function Jobs() {
               jobDate={_post.jobDate}
               jobEmployment={_post.jobEmployment}
               jobSalary={_post.jobSalary}
+              jobBadge={
+                _post.jobDate == '2024-04-28' ? (
+                  <div className="job-badge rounded">
+                    <MdNewReleases size={17} /> New
+                  </div>
+                ) : (
+                  ''
+                )
+              }
             />
           )
         })
@@ -89,10 +99,12 @@ export default function Jobs() {
           <input className="bg-default-dark border border-color-default rounded p-1"></input>
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
-          {availableFilters}
+          {availableFilters ?? 'TODO: Loading...'}
         </div>
         <div className="p-3 w-full">
-          <div className="flex flex-col gap-2 slide-top">{jobPosts}</div>
+          <div className="flex flex-col gap-2 slide-top">
+            {jobPosts ?? 'TODO: Loading...'}
+          </div>
         </div>
       </div>
     </>

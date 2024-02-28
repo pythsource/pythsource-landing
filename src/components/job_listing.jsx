@@ -15,6 +15,7 @@ export default function JobListing({
   jobEmployment,
   jobSalary,
   jobDate,
+  jobBadge,
 }) {
   return (
     <>
@@ -34,7 +35,7 @@ export default function JobListing({
               <MdCurrencyExchange size={17} /> {jobSalary}
             </div>
             <div className="flex items-center gap-1">
-              <MdCalendarMonth size={17} /> {jobDate}
+              <MdCalendarMonth size={17} /> {jobDate} {jobBadge ? jobBadge : ''}
             </div>
           </div>
           <h1 className="text-xl font-bold">{jobTitle}</h1>
@@ -60,4 +61,5 @@ JobListing.propTypes = {
   jobProject: PropTypes.string.isRequired,
   jobSalary: PropTypes.string.isRequired,
   jobTitle: PropTypes.string.isRequired,
+  jobBadge: PropTypes.string,
 }
