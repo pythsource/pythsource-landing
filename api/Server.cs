@@ -2,8 +2,9 @@ namespace HOME_API;
 
 internal abstract class Server
 {
+	// TODO: Move to .env file!
 	public const string SQL_CONNECTION_STRING =
-		"Server=localhost;Port=3306;Database=landing;User=landing_user;Password=ZGOuFHxvFoGGKQvusjQ1;";
+		"Server=central-db;Port=3306;Database=landing;User=landing_user;Password=ZGOuFHxvFoGGKQvusjQ1;";
 
 	private static void Main()
 	{

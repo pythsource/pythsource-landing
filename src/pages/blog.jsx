@@ -1,10 +1,30 @@
 import { changeTitle } from '../main'
 import { MdCalendarMonth, MdCategory, MdPerson } from 'react-icons/md'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Blog() {
   const [availableFilters, setAvailableFilters] = useState('TODO: Filters')
+  const [blogPosts, setBlogPosts] = useState('TODO: API')
   changeTitle('Blog')
+
+  const populatePosts = async () => {
+    try {
+      const response = await fetch(
+        'https://api.pythsource.com/landing/index_blogs',
+        {
+          method: 'GET'
+        }
+      )
+
+      var responseBody = await response.json()
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <>
