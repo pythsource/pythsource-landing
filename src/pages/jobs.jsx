@@ -26,15 +26,18 @@ export default function Jobs() {
       let filters = []
 
       responseData.jobCategories.map((_category) => {
-        filters.push(<button>{_category}</button>)
+        filters.push(<input type="checkbox" id={_category}></input>)
+        filters.push(<label htmlFor={_category}>{_category}</label>)
       })
 
       responseData.jobEmployments.map((_employment) => {
-        filters.push(<button>{_employment}</button>)
+        filters.push(<input type="checkbox" id={_employment}></input>)
+        filters.push(<label htmlFor={_employment}>{_employment}</label>)
       })
 
       responseData.jobProjects.map((_project) => {
-        filters.push(<button>{_project}</button>)
+        filters.push(<input type="checkbox" id={_project}></input>)
+        filters.push(<label htmlFor={_project}>{_project}</label>)
       })
 
       setAvailableFilters(filters)
