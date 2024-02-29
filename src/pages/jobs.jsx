@@ -2,6 +2,7 @@ import { changeTitle } from '../main'
 import { useEffect, useState } from 'react'
 import JobListing from '../components/job_listing'
 import { MdNewReleases } from 'react-icons/md'
+import moment from 'moment'
 
 export default function Jobs() {
   changeTitle('Jobs')
@@ -61,6 +62,7 @@ export default function Jobs() {
           return (
             <JobListing
               key={_index}
+              jobId={_post.jobId}
               jobTitle={_post.jobTitle}
               jobDesc={_post.jobDesc}
               jobProject={_post.jobProject}
@@ -69,9 +71,9 @@ export default function Jobs() {
               jobEmployment={_post.jobEmployment}
               jobSalary={_post.jobSalary}
               jobBadge={
-                _post.jobDate == '2024-04-28' ? (
+                moment().isBefore(moment(_post.jobDate).add(10, 'days')) ? (
                   <div className="job-badge rounded">
-                    <MdNewReleases size={17} /> New
+                    <MdNewReleases size={17} /> Recent Post
                   </div>
                 ) : (
                   ''

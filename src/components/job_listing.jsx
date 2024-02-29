@@ -4,10 +4,12 @@ import {
   MdTimelapse,
   MdCurrencyExchange,
   MdCalendarMonth,
+  MdTag,
 } from 'react-icons/md'
 import PropTypes from 'prop-types'
 
 export default function JobListing({
+  jobId,
   jobTitle,
   jobDesc,
   jobProject,
@@ -22,6 +24,9 @@ export default function JobListing({
       <div className="flex bg-default-darkl flex-row border border-color-default rounded">
         <div className="flex flex-col p-3 w-full">
           <div className="flex gap-5 text-footer mb-3 text-sm">
+            <div className="flex items-center gap-1">
+              <MdTag size={17} /> {jobId}
+            </div>
             <div className="flex items-center gap-1">
               <MdViewKanban size={17} /> {jobProject}
             </div>
@@ -54,6 +59,7 @@ export default function JobListing({
   )
 }
 JobListing.propTypes = {
+  jobId: PropTypes.string.isRequired,
   jobCategory: PropTypes.string.isRequired,
   jobDate: PropTypes.string.isRequired,
   jobDesc: PropTypes.string.isRequired,
@@ -61,5 +67,5 @@ JobListing.propTypes = {
   jobProject: PropTypes.string.isRequired,
   jobSalary: PropTypes.string.isRequired,
   jobTitle: PropTypes.string.isRequired,
-  jobBadge: PropTypes.string,
+  jobBadge: PropTypes.any,
 }

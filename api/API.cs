@@ -23,14 +23,16 @@ public class Api : ControllerBase
 
 			while (await sqlReader.ReadAsync())
 			{
-				var postTitle = sqlReader.GetString(0);
-				var postContent = sqlReader.GetString(1);
-				var postCategory = sqlReader.GetString(2);
-				var postAuthor = sqlReader.GetString(3);
-				var postDate = sqlReader.GetDateTime(4);
+				var postId = sqlReader.GetInt32(0);
+				var postTitle = sqlReader.GetString(1);
+				var postContent = sqlReader.GetString(2);
+				var postCategory = sqlReader.GetString(3);
+				var postAuthor = sqlReader.GetString(4);
+				var postDate = sqlReader.GetDateTime(5);
 
 				blogPosts.Add(new
 				{
+					postId = postId.ToString(),
 					postTitle,
 					postContent,
 					postCategory,
@@ -54,31 +56,44 @@ public class Api : ControllerBase
 		});
 	}
 
-	[HttpPost("get_blogcontent")]
-	public async Task<IResult> GetBlogContent([FromQuery] string _title)
+	[HttpPost("get_blogpost")]
+	public async Task<IResult> GetBlogContent([FromQuery] string _id)
 	{
-		string blogContent;
+		object blogPost;
 		await using (var sqlConnection = new MySqlConnection(Server.SQL_CONNECTION_STRING))
 		{
 			await sqlConnection.OpenAsync();
 
 			var sqlCommand =
-				new MySqlCommand("SELECT content FROM landing.blog WHERE title=(@blogTitle)", sqlConnection);
-			sqlCommand.Parameters.AddWithValue("blogTitle", _title);
+				new MySqlCommand("SELECT * FROM landing.blog WHERE id=(@blogId)", sqlConnection);
+			sqlCommand.Parameters.AddWithValue("blogId", _id);
 			var sqlReader = await sqlCommand.ExecuteReaderAsync();
 			var readResult = await sqlReader.ReadAsync();
 			if (!readResult)
 				return Results.NotFound();
-
-			var sqlContent = sqlReader.GetString(0);
-			blogContent = sqlContent;
-
+			
+			var blogId = sqlReader.GetInt32(0);
+			var blogTitle = sqlReader.GetString(1);
+			var blogContent = sqlReader.GetString(2);
+			var blogCategory = sqlReader.GetString(3);
+			var blogAuthor = sqlReader.GetString(4);
+			var blogDate = sqlReader.GetDateTime(5);
+			blogPost = new
+			{
+				blogId = blogId.ToString(),
+				blogTitle,
+				blogContent,
+				blogCategory,
+				blogAuthor,
+				blogDate = blogDate.ToString("yyyy-MM-dd")
+			};
+			
 			await sqlConnection.CloseAsync();
 		}
 
 		return Results.Ok(new
 		{
-			blogContent
+			blogPost
 		});
 	}
 
@@ -100,16 +115,18 @@ public class Api : ControllerBase
 
 			while (await sqlReader.ReadAsync())
 			{
-				var jobTitle = sqlReader.GetString(0);
-				var jobDesc = sqlReader.GetString(1);
-				var jobProject = sqlReader.GetString(2);
-				var jobCategory = sqlReader.GetString(3);
-				var jobEmployment = sqlReader.GetString(4);
-				var jobSalary = sqlReader.GetString(5);
-				var jobDate = sqlReader.GetDateTime(6);
+				var jobId = sqlReader.GetInt32(0);
+				var jobTitle = sqlReader.GetString(1);
+				var jobDesc = sqlReader.GetString(2);
+				var jobProject = sqlReader.GetString(3);
+				var jobCategory = sqlReader.GetString(4);
+				var jobEmployment = sqlReader.GetString(5);
+				var jobSalary = sqlReader.GetString(6);
+				var jobDate = sqlReader.GetDateTime(7);
 
 				jobPosts.Add(new
 				{
+					jobId = jobId.ToString(),
 					jobTitle,
 					jobDesc,
 					jobProject,
