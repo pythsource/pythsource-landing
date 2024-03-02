@@ -1,97 +1,149 @@
 import { changeTitle } from '../main'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import JobListing from '../components/job_listing'
-import { MdNewReleases } from 'react-icons/md'
-import moment from 'moment'
 
 export default function Jobs() {
   changeTitle('Jobs')
-  const [availableFilters, setAvailableFilters] = useState()
+
+  var rawPosts = useRef()
   const [jobPosts, setJobPosts] = useState()
 
-  const populateFilters = async () => {
-    try {
-      const response = await fetch(
-        'https://api.pythsource.com/lnd/index_jobs',
-        {
-          method: 'GET',
-        }
-      )
+  const [searchPrompt, setSearchPrompt] = useState('')
+  const [availableFilters, setAvailableFilters] = useState()
+  const [enabledFilters, setEnabledFilters] = useState()
 
-      const responseData = await response.json()
-      if (responseData.length == 0) {
-        setAvailableFilters('TODO: Empty response')
-      }
-
-      let filters = []
-
-      responseData.jobCategories.map((_category) => {
-        filters.push(<input type="checkbox" id={_category}></input>)
-        filters.push(<label htmlFor={_category}>{_category}</label>)
-      })
-
-      responseData.jobEmployments.map((_employment) => {
-        filters.push(<input type="checkbox" id={_employment}></input>)
-        filters.push(<label htmlFor={_employment}>{_employment}</label>)
-      })
-
-      responseData.jobProjects.map((_project) => {
-        filters.push(<input type="checkbox" id={_project}></input>)
-        filters.push(<label htmlFor={_project}>{_project}</label>)
-      })
-
-      setAvailableFilters(filters)
-    } catch (error) {
-      console.error('Error encountered:', error)
+  const presentJobs = () => {
+    if (rawPosts.current.length === 0) {
+      setJobPosts('TODO: Empty response')
     }
+
+    setJobPosts(
+      rawPosts.current.map((_post) => {
+        return (
+          <JobListing
+            key={_post.id}
+            jobId={_post.id}
+            jobTitle={_post.title}
+            jobDesc={_post.desc}
+            jobProject={_post.project}
+            jobCategory={_post.category}
+            jobEmployment={_post.employment}
+            jobSalary={_post.salary}
+            jobDate={_post.date}
+            jobBadge={'TODO: Badges'}
+          />
+        )
+      })
+    )
   }
 
-  const populateJobs = async () => {
-    try {
-      const response = await fetch(
-        'https://api.pythsource.com/lnd/index_jobs',
-        {
-          method: 'GET',
-        }
-      )
+  const updateSearch = (_prompt) => {
+    setSearchPrompt(_prompt)
 
-      const responseData = await response.json()
-      if (responseData.length == 0) {
-        setJobPosts('TODO: Empty response')
-      }
-
-      setJobPosts(
-        responseData.jobPosts.map((_post, _index) => {
-          return (
-            <JobListing
-              key={_index}
-              jobId={_post.jobId}
-              jobTitle={_post.jobTitle}
-              jobDesc={_post.jobDesc}
-              jobProject={_post.jobProject}
-              jobCategory={_post.jobCategory}
-              jobDate={_post.jobDate}
-              jobEmployment={_post.jobEmployment}
-              jobSalary={_post.jobSalary}
-              jobBadge={
-                moment().isBefore(moment(_post.jobDate).add(10, 'days')) ? (
-                  <div className="job-badge rounded">
-                    <MdNewReleases size={17} /> Recent Post
-                  </div>
-                ) : (
-                  ''
-                )
-              }
-            />
-          )
-        })
-      )
-    } catch (error) {
-      console.error('Error encountered:', error)
+    var filteredJobs
+    if (_prompt !== '') {
+      filteredJobs = rawPosts.current.filter((_e) => !_e.title.indexOf(_prompt))
+    } else {
+      filteredJobs = rawPosts.current
     }
+
+    setJobPosts(
+      filteredJobs.map((_post) => {
+        return (
+          <JobListing
+            key={_post.id}
+            jobId={_post.id}
+            jobTitle={_post.title}
+            jobDesc={_post.desc}
+            jobProject={_post.project}
+            jobCategory={_post.category}
+            jobEmployment={_post.employment}
+            jobSalary={_post.salary}
+            jobDate={_post.date}
+            jobBadge={'TODO: Badges'}
+          />
+        )
+      })
+    )
   }
 
   useEffect(() => {
+    const populateJobs = async () => {
+      try {
+        const httpResponse = await fetch(
+          'https://api.pythsource.com/lnd/index_jobs',
+          {
+            method: 'GET',
+          }
+        )
+
+        if (httpResponse.status !== 200) {
+          setJobPosts('TODO: Unable to receive jobs')
+        }
+
+        const jsonResponse = await httpResponse.json()
+        if (jsonResponse.length === 0) {
+          setJobPosts('TODO: Empty response')
+        }
+
+        rawPosts.current = jsonResponse.jobPosts.map((_post) => {
+          return {
+            id: _post.jobId,
+            title: _post.jobTitle,
+            desc: _post.jobDesc,
+            project: _post.jobProject,
+            category: _post.jobCategory,
+            employment: _post.jobEmployment,
+            salary: _post.jobSalary,
+            date: _post.jobDate,
+          }
+        })
+        presentJobs()
+      } catch (error) {
+        console.error(
+          'Encountered an unexpected error whilst populating the job listing:',
+          error
+        )
+      }
+    }
+
+    const populateFilters = async () => {
+      try {
+        const httpResponse = await fetch(
+          'https://api.pythsource.com/lnd/index_jobs',
+          {
+            method: 'GET',
+          }
+        )
+
+        if (httpResponse.status !== 200) {
+          setAvailableFilters('TODO: Unable to receive filters')
+        }
+
+        const jsonResponse = await httpResponse.json()
+        if (jsonResponse.length === 0) {
+          setAvailableFilters('TODO: Empty response')
+        }
+
+        var filters = []
+        jsonResponse.jobCategories.map((_element) => {
+          filters.push(<p key={crypto.randomUUID()}>{_element}</p>)
+        })
+        jsonResponse.jobEmployments.map((_element) => {
+          filters.push(<p key={crypto.randomUUID()}>{_element}</p>)
+        })
+        jsonResponse.jobProjects.map((_element) => {
+          filters.push(<p key={crypto.randomUUID()}>{_element}</p>)
+        })
+        setAvailableFilters(filters)
+      } catch (error) {
+        console.error(
+          'Encountered an unexpected error whilst populating filters:',
+          error
+        )
+      }
+    }
+
     populateJobs()
     populateFilters()
   }, [])
@@ -101,7 +153,13 @@ export default function Jobs() {
       <div className="flex bg-default w-full h-full border border-color-default rounded-xl">
         <div className="flex bg-default-darkl flex-col border-r border-color-default w-1/5 p-3">
           <span>Search:</span>
-          <input className="bg-default-dark border border-color-default rounded p-1"></input>
+          <input
+            value={searchPrompt}
+            onChange={(e) => {
+              updateSearch(e.target.value)
+            }}
+            className="bg-default-dark border border-color-default rounded p-1"
+          ></input>
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
           {availableFilters ?? 'TODO: Loading...'}
