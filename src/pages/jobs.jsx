@@ -10,7 +10,6 @@ export default function Jobs() {
 
   const [searchPrompt, setSearchPrompt] = useState('')
   const [availableFilters, setAvailableFilters] = useState()
-  var enabledFilters = useRef([])
 
   const presentJobs = () => {
     if (rawPosts.current.length === 0) {
@@ -49,73 +48,6 @@ export default function Jobs() {
       filteredJobs = rawPosts.current
     }
 
-    setJobPosts(
-      filteredJobs.map((_post) => {
-        return (
-          <JobListing
-            key={_post.id}
-            jobId={_post.id}
-            jobTitle={_post.title}
-            jobDesc={_post.desc}
-            jobProject={_post.project}
-            jobCategory={_post.category}
-            jobEmployment={_post.employment}
-            jobSalary={_post.salary}
-            jobDate={_post.date}
-            jobBadge={'TODO: Badges'}
-          />
-        )
-      })
-    )
-  }
-
-  const updateFilters = (_filter, _type) => {
-    if (_filter.target.checked) {
-      enabledFilters.current = [
-        { name: _filter.target.name, type: _type },
-        ...enabledFilters.current,
-      ]
-      _filter.target.checked = true
-    } else {
-      enabledFilters.current = enabledFilters.current.filter(
-        (_arrayElement) => _arrayElement.name !== _filter.target.name
-      )
-      _filter.target.checked = false
-    }
-    console.log('Enabled filters:', enabledFilters.current)
-
-    var filteredJobs
-    if (enabledFilters.current.length !== 0) {
-      var mappedJobs = []
-      enabledFilters.current.map((_filter) => {
-        switch (_filter.type) {
-          case 'project':
-            mappedJobs.push(
-              rawPosts.current.filter((_post) => _post.project === _filter.name)
-            )
-            break
-          case 'employment':
-            mappedJobs.push(
-              rawPosts.current.filter(
-                (_post) => _post.employment === _filter.name
-              )
-            )
-            break
-          case 'category':
-            mappedJobs.push(
-              rawPosts.current.filter(
-                (_post) => _post.category === _filter.name
-              )
-            )
-            break
-        }
-      })
-      filteredJobs = mappedJobs.flat(1)
-    } else {
-      filteredJobs = rawPosts.current
-    }
-
-    console.log('Filtered jobs:', filteredJobs)
     setJobPosts(
       filteredJobs.map((_post) => {
         return (
@@ -202,7 +134,6 @@ export default function Jobs() {
                 type="checkbox"
                 key={crypto.randomUUID()}
                 name={_element}
-                onChange={(_e) => updateFilters(_e, 'category')}
               ></input>
               <label htmlFor={_element}>{_element}</label>
             </>
