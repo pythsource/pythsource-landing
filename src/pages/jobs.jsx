@@ -1,6 +1,8 @@
 import { changeTitle } from '../main'
 import { useEffect, useRef, useState } from 'react'
 import JobListing from '../components/job_listing'
+import moment from 'moment'
+import { MdNewLabel, MdNewReleases } from 'react-icons/md'
 
 export default function Jobs() {
   changeTitle('Jobs')
@@ -29,7 +31,16 @@ export default function Jobs() {
             jobEmployment={_post.employment}
             jobSalary={_post.salary}
             jobDate={_post.date}
-            jobBadge={'TODO: Badges'}
+            jobBadge={
+              moment().isBefore(moment(_post.date).add(5, 'days')) ? (
+                <div className="job-badge">
+                  <MdNewReleases size={17} />
+                  Recent
+                </div>
+              ) : (
+                ''
+              )
+            }
           />
         )
       })
