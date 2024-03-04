@@ -226,6 +226,73 @@ public class Api : ControllerBase
 			jobPosts
 		});
 	}
+
+	[HttpPost("filter_blogs")]
+	public async Task<IResult> FilterBlogs([FromBody] ModelDefinitions.FiltersModel _filters)
+	{
+		var blogPosts = new List<object>();
+
+		if (_filters.Filters == null)
+			throw new ArgumentException("_filters was somehow null (it shouldn't be!)");
+
+		if (_filters.Filters.Length == 0)
+			return await IndexBlogs();
+
+		var queryObjects = new List<string>();
+		// ReSharper disable once LoopCanBeConvertedToQuery
+		foreach (var filterObject in _filters.Filters)
+		{
+			if (filterObject.Type != "category" && filterObject.Type != "author")
+				continue;
+
+			queryObjects.Add($"{filterObject.Type}=\'{filterObject.Name}\'");
+		}
+
+		await using (var sqlConnection = new MySqlConnection(Server.SQL_CONNECTION_STRING))
+		{
+			await sqlConnection.OpenAsync();
+
+			var sqlCommand = new MySqlCommand($"SELECT * FROM landing.blog WHERE {string.Join(" AND ", queryObjects)}",
+				sqlConnection);
+
+			var sqlCheck = await sqlCommand.ExecuteReaderAsync();
+			var checkResult = await sqlCheck.ReadAsync();
+			if (!checkResult)
+				return Results.Ok(new
+				{
+					blogPosts
+				});
+			await sqlCheck.CloseAsync();
+
+			var sqlReader = await sqlCommand.ExecuteReaderAsync();
+			while (await sqlReader.ReadAsync())
+			{
+				var postId = sqlReader.GetInt32(0);
+				var postTitle = sqlReader.GetString(1);
+				var postContent = sqlReader.GetString(2);
+				var postCategory = sqlReader.GetString(3);
+				var postAuthor = sqlReader.GetString(4);
+				var postDate = sqlReader.GetDateTime(5);
+
+				blogPosts.Add(new
+				{
+					postId = postId.ToString(),
+					postTitle,
+					postContent,
+					postCategory,
+					postAuthor,
+					postDate = postDate.ToString("yyyy-MM-dd")
+				});
+			}
+
+			await sqlConnection.CloseAsync();
+		}
+
+		return Results.Ok(new
+		{
+			blogPosts
+		});
+	}
 }
 
 public abstract class ModelDefinitions
