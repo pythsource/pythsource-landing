@@ -154,4 +154,10 @@ public class Api : ControllerBase
 			jobCategories, jobEmployments, jobProjects, jobPosts
 		});
 	}
+
+	[HttpPost("filter_jobs")]
+	public async Task<IResult> FilterJobs([FromBody] string _filters)
+	{
+		return Results.Ok();
+	}
 }

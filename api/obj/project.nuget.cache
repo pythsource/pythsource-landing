@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "X9YXyjKl333CVEfa7LALX3jz2scr6+4f/GM/NZaPQjXGodxfKW/w3WQU0rPhKvdihUTMTUzup0jPxMPc+l074Q==",
+  "dgSpecHash": "3sziF1WK/pxtdW1sscbe6FPKPlJ/ZWoCK7TvMblaX7VRhlghcVtKBtWlU71yKA47ko3LsbzaD/OTNBVaZlwR7g==",
   "success": true,
   "projectFilePath": "/mnt/HDD/Development/Repositories/PythSource-Landing/api/api.csproj",
   "expectedPackageFiles": [
     "/home/idexv/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.1/microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
     "/home/idexv/.nuget/packages/mysqlconnector/2.3.5/mysqlconnector.2.3.5.nupkg.sha512",
-    "/home/idexv/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.1/microsoft.aspnetcore.app.ref.8.0.1.nupkg.sha512"
+    "/home/idexv/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.2/microsoft.aspnetcore.app.ref.8.0.2.nupkg.sha512"
   ],
   "logs": []
 }
