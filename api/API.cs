@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 namespace HOME_API;
@@ -71,7 +72,7 @@ public class Api : ControllerBase
 			var readResult = await sqlReader.ReadAsync();
 			if (!readResult)
 				return Results.NotFound();
-			
+
 			var blogId = sqlReader.GetInt32(0);
 			var blogTitle = sqlReader.GetString(1);
 			var blogContent = sqlReader.GetString(2);
@@ -87,7 +88,7 @@ public class Api : ControllerBase
 				blogAuthor,
 				blogDate = blogDate.ToString("yyyy-MM-dd")
 			};
-			
+
 			await sqlConnection.CloseAsync();
 		}
 
@@ -156,8 +157,91 @@ public class Api : ControllerBase
 	}
 
 	[HttpPost("filter_jobs")]
-	public async Task<IResult> FilterJobs([FromBody] string _filters)
+	public async Task<IResult> FilterJobs([FromBody] ModelDefinitions.FiltersModel _filters)
 	{
-		return Results.Ok();
+		var jobPosts = new List<object>();
+
+		if (_filters.Filters == null)
+			throw new ArgumentException("_filters was somehow null (it shouldn't be!)");
+
+		if (_filters.Filters.Length == 0)
+			return await IndexJobs();
+
+		var queryObjects = new List<string>();
+		// ReSharper disable once LoopCanBeConvertedToQuery
+		foreach (var filterObject in _filters.Filters)
+		{
+			if (filterObject.Type != "category" && filterObject.Type != "project" && filterObject.Type != "employment")
+				continue;
+
+			queryObjects.Add($"{filterObject.Type}=\'{filterObject.Name}\'");
+		}
+
+		await using (var sqlConnection = new MySqlConnection(Server.SQL_CONNECTION_STRING))
+		{
+			await sqlConnection.OpenAsync();
+
+			var sqlCommand = new MySqlCommand($"SELECT * FROM landing.jobs WHERE {string.Join(" AND ", queryObjects)}",
+				sqlConnection);
+
+			var sqlCheck = await sqlCommand.ExecuteReaderAsync();
+
+			var checkResult = await sqlCheck.ReadAsync();
+			if (!checkResult)
+				return Results.Ok(new
+				{
+					jobPosts
+				});
+
+			await sqlCheck.CloseAsync();
+
+			var sqlReader = await sqlCommand.ExecuteReaderAsync();
+			while (await sqlReader.ReadAsync())
+			{
+				var jobId = sqlReader.GetInt32(0);
+				var jobTitle = sqlReader.GetString(1);
+				var jobDesc = sqlReader.GetString(2);
+				var jobProject = sqlReader.GetString(3);
+				var jobCategory = sqlReader.GetString(4);
+				var jobEmployment = sqlReader.GetString(5);
+				var jobSalary = sqlReader.GetString(6);
+				var jobDate = sqlReader.GetDateTime(7);
+
+				jobPosts.Add(new
+				{
+					jobId = jobId.ToString(),
+					jobTitle,
+					jobDesc,
+					jobProject,
+					jobCategory,
+					jobEmployment,
+					jobSalary,
+					jobDate = jobDate.ToString("yyyy-MM-dd")
+				});
+			}
+
+			await sqlConnection.CloseAsync();
+		}
+
+		return Results.Ok(new
+		{
+			jobPosts
+		});
+	}
+}
+
+public abstract class ModelDefinitions
+{
+	// ReSharper disable once ClassNeverInstantiated.Global
+	// Here's why (look at solution 2): https://www.developerload.com/deserialization-of-reference-types-without-parameterless-constructor-is-not-supported
+	public class FilterObject
+	{
+		[Required] public string? Name { get; set; }
+		[Required] public string? Type { get; set; }
+	}
+
+	public class FiltersModel
+	{
+		[Required] public FilterObject[]? Filters { get; set; }
 	}
 }

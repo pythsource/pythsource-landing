@@ -2,7 +2,7 @@ import { changeTitle } from '../main'
 import { useEffect, useRef, useState } from 'react'
 import JobListing from '../components/job_listing'
 import moment from 'moment'
-import { MdNewLabel, MdNewReleases } from 'react-icons/md'
+import { MdNewReleases } from 'react-icons/md'
 
 export default function Jobs() {
   changeTitle('Jobs')
@@ -12,6 +12,7 @@ export default function Jobs() {
 
   const [searchPrompt, setSearchPrompt] = useState('')
   const [availableFilters, setAvailableFilters] = useState()
+  var enabledFilters = useRef([])
 
   const presentJobs = () => {
     if (rawPosts.current.length === 0) {
@@ -77,6 +78,61 @@ export default function Jobs() {
         )
       })
     )
+  }
+
+  const filterJobs = async () => {
+    const response = await fetch(
+      'http://localhost:5000/filter_jobs',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({filters: enabledFilters.current})
+      }
+    )
+
+    const responseBody = await response.json()
+    setJobPosts(responseBody.jobPosts.map(_post => {
+      return (
+        <JobListing
+          key={_post.jobId}
+          jobId={_post.jobId}
+          jobTitle={_post.jobTitle}
+          jobDesc={_post.jobDesc}
+          jobProject={_post.jobProject}
+          jobCategory={_post.jobCategory}
+          jobEmployment={_post.jobEmployment}
+          jobSalary={_post.jobSalary}
+          jobDate={_post.jobDate}
+          jobBadge={
+            moment().isBefore(moment(_post.date).add(5, 'days')) ? (
+              <div className="job-badge">
+                <MdNewReleases size={17} />
+                Recent
+              </div>
+            ) : (
+              ''
+            )
+          }
+        />
+      )
+    }))
+  }
+
+  const updateEnabledFilters = (_inputElement, _type) => {
+    if (_inputElement.target.checked) {
+      enabledFilters.current = [
+        { name: _inputElement.target.name, type: _type },
+        ...enabledFilters.current,
+      ]
+    } else {
+      enabledFilters.current = enabledFilters.current.filter(
+        (_e) => _e.name !== _inputElement.target.name
+      )
+    }
+
+    filterJobs()
   }
 
   useEffect(() => {
@@ -145,6 +201,7 @@ export default function Jobs() {
                 type="checkbox"
                 key={crypto.randomUUID()}
                 name={_element}
+                onChange={(_i) => updateEnabledFilters(_i, 'category')}
               ></input>
               <label htmlFor={_element}>{_element}</label>
             </>
@@ -157,7 +214,7 @@ export default function Jobs() {
                 type="checkbox"
                 key={crypto.randomUUID()}
                 name={_element}
-                onChange={(_e) => updateFilters(_e, 'employment')}
+                onChange={(_i) => updateEnabledFilters(_i, 'employment')}
               ></input>
               <label htmlFor={_element}>{_element}</label>
             </>
@@ -170,7 +227,7 @@ export default function Jobs() {
                 type="checkbox"
                 key={crypto.randomUUID()}
                 name={_element}
-                onChange={(_e) => updateFilters(_e, 'project')}
+                onChange={(_i) => updateEnabledFilters(_i, 'project')}
               ></input>
               <label htmlFor={_element}>{_element}</label>
             </>
