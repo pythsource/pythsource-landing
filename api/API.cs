@@ -185,14 +185,12 @@ public class Api : ControllerBase
 				sqlConnection);
 
 			var sqlCheck = await sqlCommand.ExecuteReaderAsync();
-
 			var checkResult = await sqlCheck.ReadAsync();
 			if (!checkResult)
 				return Results.Ok(new
 				{
 					jobPosts
 				});
-
 			await sqlCheck.CloseAsync();
 
 			var sqlReader = await sqlCommand.ExecuteReaderAsync();

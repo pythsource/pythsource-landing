@@ -106,7 +106,7 @@ export default function Jobs() {
           jobSalary={_post.jobSalary}
           jobDate={_post.jobDate}
           jobBadge={
-            moment().isBefore(moment(_post.date).add(5, 'days')) ? (
+            moment().isBefore(moment(_post.jobDate).add(5, 'days')) ? (
               <div className="job-badge">
                 <MdNewReleases size={17} />
                 Recent
