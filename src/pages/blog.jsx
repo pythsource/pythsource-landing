@@ -86,7 +86,7 @@ export default function Blog() {
   }
 
   const filterBlogs = async () => {
-    const response = await fetch('http://localhost:5000/filter_blogs', {
+    const response = await fetch('https://api.pythsource.com/filter_blogs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

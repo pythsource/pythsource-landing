@@ -90,7 +90,7 @@ export default function Jobs() {
   }
 
   const filterJobs = async () => {
-    const response = await fetch('http://localhost:5000/filter_jobs', {
+    const response = await fetch('https://api.pythsource.com/lnd/filter_jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
