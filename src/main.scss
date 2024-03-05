@@ -257,6 +257,27 @@ $default-text-highlight: #e0b98d;
   margin-left: 0.5rem;
 }
 
+.filter-box {
+  background-color: $default-background-dark;
+  border: 1px solid $default-border-color;
+  padding: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  user-select: none;
+
+  input {
+    appearance: none;
+    border: 1px solid $default-border-color;
+    padding: 0.25rem;
+    background-color: rgb(22, 22, 22);
+
+    &:checked {
+      background-color: #4b84cf;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .page-container {
     font-size: 1rem;

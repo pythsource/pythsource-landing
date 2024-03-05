@@ -1,10 +1,6 @@
 import { FaGithub, FaGitlab, FaYoutube } from 'react-icons/fa'
 import { changeTitle } from '../main'
-import {
-  MdAlternateEmail,
-  MdGamepad,
-  MdViewKanban,
-} from 'react-icons/md'
+import { MdAlternateEmail, MdGamepad, MdViewKanban } from 'react-icons/md'
 
 export default function Contacts() {
   changeTitle('Contacts')
@@ -15,10 +11,12 @@ export default function Contacts() {
         <div className="flex flex-col">
           <div className="flex">
             <div className="flex pr-5 flex-col w-1/2 border-r border-color-default">
-              <h1 className="text-2xl font-bold">General Inquiries</h1>
+              <h1 className="text-lg md:text-2xl font-bold">
+                General Inquiries
+              </h1>
               <hr className="border-color-default mb-3" />
               <div className="flex flex-col border-l-2 border-dashed border-color-default pl-3">
-                <div className="text-lg flex items-center gap-2">
+                <div className="md:text-lg truncate flex items-center gap-2">
                   <MdAlternateEmail size={35} />
                   <div className="flex flex-col">
                     <h1>Message us by e-mail:</h1>
@@ -33,10 +31,10 @@ export default function Contacts() {
               </div>
             </div>
             <div className="pl-5 flex flex-col w-1/2">
-              <h1 className="text-2xl font-bold">Other Inquiries</h1>
+              <h1 className="text-lg md:text-2xl font-bold">Other Inquiries</h1>
               <hr className="border-color-default mb-3" />
               <div className="flex flex-col fancy-link-animation gap-1 border-l-2 border-dashed border-color-default pl-3">
-                <h1 className="text-lg border-b border-color-default mb-1">
+                <h1 className="md:text-lg border-b border-color-default mb-1">
                   Social pages:
                 </h1>
                 <a
@@ -51,7 +49,7 @@ export default function Contacts() {
                 >
                   <MdGamepad size={35} /> ModDB
                 </a>
-                <h1 className="text-lg border-b border-color-default mb-1">
+                <h1 className="md:text-lg border-b border-color-default mb-1">
                   For technical inquiries:
                 </h1>
                 <a
@@ -76,7 +74,7 @@ export default function Contacts() {
             </div>
           </div>
           <div className="text-center border-t border-color-default mt-5 pt-5">
-            <h1 className="text-lg font-bold">
+            <h1 className="md:text-lg font-bold">
               You can also contact our team members directly. Some of them might
               allow direct messaging.
             </h1>

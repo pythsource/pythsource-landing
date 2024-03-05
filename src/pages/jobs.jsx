@@ -90,43 +90,42 @@ export default function Jobs() {
   }
 
   const filterJobs = async () => {
-    const response = await fetch(
-      'http://localhost:5000/filter_jobs',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({filters: enabledFilters.current})
-      }
-    )
+    const response = await fetch('http://localhost:5000/filter_jobs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ filters: enabledFilters.current }),
+    })
 
     const responseBody = await response.json()
-    setJobPosts(responseBody.jobPosts.map(_post => {
-      return (
-        <JobListing
-          key={_post.jobId}
-          jobId={_post.jobId}
-          jobTitle={_post.jobTitle}
-          jobDesc={_post.jobDesc}
-          jobProject={_post.jobProject}
-          jobCategory={_post.jobCategory}
-          jobEmployment={_post.jobEmployment}
-          jobSalary={_post.jobSalary}
-          jobDate={_post.jobDate}
-          jobBadge={
-            moment().isBefore(moment(_post.jobDate).add(5, 'days')) ? (
-              <div className="job-badge">
-                <MdNewReleases size={17} />
-                Recent
-              </div>
-            ) : (
-              ''
-            )
-          }
-        />
-      )
-    }))
+    setJobPosts(
+      responseBody.jobPosts.map((_post) => {
+        return (
+          <JobListing
+            key={_post.jobId}
+            jobId={_post.jobId}
+            jobTitle={_post.jobTitle}
+            jobDesc={_post.jobDesc}
+            jobProject={_post.jobProject}
+            jobCategory={_post.jobCategory}
+            jobEmployment={_post.jobEmployment}
+            jobSalary={_post.jobSalary}
+            jobDate={_post.jobDate}
+            jobBadge={
+              moment().isBefore(moment(_post.jobDate).add(5, 'days')) ? (
+                <div className="job-badge">
+                  <MdNewReleases size={17} />
+                  Recent
+                </div>
+              ) : (
+                ''
+              )
+            }
+          />
+        )
+      })
+    )
   }
 
   const updateEnabledFilters = (_inputElement, _type) => {
@@ -206,39 +205,45 @@ export default function Jobs() {
         jsonResponse.jobCategories.map((_element) => {
           filters.push(
             <>
-              <input
-                type="checkbox"
-                key={crypto.randomUUID()}
-                name={_element}
-                onChange={(_i) => updateEnabledFilters(_i, 'category')}
-              ></input>
-              <label htmlFor={_element}>{_element}</label>
+              <div className="filter-box">
+                <input
+                  type="checkbox"
+                  key={crypto.randomUUID()}
+                  id={_element}
+                  onChange={(_i) => updateEnabledFilters(_i, 'category')}
+                ></input>
+                <label htmlFor={_element}>{_element}</label>
+              </div>
             </>
           )
         })
         jsonResponse.jobEmployments.map((_element) => {
           filters.push(
             <>
-              <input
-                type="checkbox"
-                key={crypto.randomUUID()}
-                name={_element}
-                onChange={(_i) => updateEnabledFilters(_i, 'employment')}
-              ></input>
-              <label htmlFor={_element}>{_element}</label>
+              <div className="filter-box">
+                <input
+                  type="checkbox"
+                  key={crypto.randomUUID()}
+                  id={_element}
+                  onChange={(_i) => updateEnabledFilters(_i, 'employment')}
+                ></input>
+                <label htmlFor={_element}>{_element}</label>
+              </div>
             </>
           )
         })
         jsonResponse.jobProjects.map((_element) => {
           filters.push(
             <>
-              <input
-                type="checkbox"
-                key={crypto.randomUUID()}
-                name={_element}
-                onChange={(_i) => updateEnabledFilters(_i, 'project')}
-              ></input>
-              <label htmlFor={_element}>{_element}</label>
+              <div className="filter-box">
+                <input
+                  type="checkbox"
+                  key={crypto.randomUUID()}
+                  id={_element}
+                  onChange={(_i) => updateEnabledFilters(_i, 'project')}
+                ></input>
+                <label htmlFor={_element}>{_element}</label>
+              </div>
             </>
           )
         })
@@ -257,8 +262,8 @@ export default function Jobs() {
 
   return (
     <>
-      <div className="flex bg-default w-full h-full border border-color-default rounded-xl">
-        <div className="flex bg-default-darkl flex-col border-r border-color-default w-1/5 p-3">
+      <div className="flex flex-col md:flex-row bg-default w-full h-full border border-color-default rounded-xl">
+        <div className="flex bg-default-darkl flex-col border-b md:border-r md:border-b-0 border-color-default md:w-1/5 p-3">
           <span>Search:</span>
           <input
             value={searchPrompt}
@@ -269,9 +274,11 @@ export default function Jobs() {
           ></input>
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
-          {availableFilters ?? 'TODO: Loading...'}
+          <div className="flex flex-col gap-1">
+            {availableFilters ?? 'TODO: Loading...'}
+          </div>
         </div>
-        <div className="p-3 w-full">
+        <div className="p-3 w-full overflow-auto">
           <div className="flex flex-col gap-2 slide-top">
             {jobPosts ?? 'TODO: Loading...'}
           </div>

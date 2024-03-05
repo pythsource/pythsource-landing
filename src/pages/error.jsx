@@ -5,7 +5,7 @@ export default function Error() {
 
     return (
         <>
-            <h1>The requested page has not been found.</h1>
+            <h1>The requested page could not be found.</h1>
         </>
     )
 }

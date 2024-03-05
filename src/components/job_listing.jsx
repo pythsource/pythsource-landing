@@ -21,9 +21,9 @@ export default function JobListing({
 }) {
   return (
     <>
-      <div className="flex bg-default-darkl flex-row border border-color-default rounded">
+      <div className="flex flex-col md:flex-row bg-default-darkl flex-row border border-color-default rounded">
         <div className="flex flex-col p-3 w-full">
-          <div className="flex gap-5 text-footer mb-3 text-sm">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-5 text-footer mb-3 text-xs md:text-sm">
             <div className="flex items-center gap-1">
               <MdTag size={17} /> {jobId}
             </div>
@@ -43,10 +43,10 @@ export default function JobListing({
               <MdCalendarMonth size={17} /> {jobDate} {jobBadge ? jobBadge : ''}
             </div>
           </div>
-          <h1 className="text-xl font-bold">{jobTitle}</h1>
-          <h2 className="text-sm text-dark">{jobDesc}</h2>
+          <h1 className="text-lg md:text-xl font-bold">{jobTitle}</h1>
+          <h2 className="text-xs md:text-sm text-dark">{jobDesc}</h2>
         </div>
-        <div className="flex flex-col justify-center p-4 border-l border-color-default">
+        <div className="flex flex-col items-center md:justify-center p-2 md:p-4 border-t md:border-t-0 md:border-l border-color-default">
           <a
             className="button-link"
             href="mailto:pythsource.official@gmail.com"

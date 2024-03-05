@@ -1,3 +1,4 @@
+import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { changeTitle } from '../main'
 import { TypeAnimation } from 'react-type-animation'
 
@@ -102,41 +103,7 @@ export default function About() {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-3">
-        <div className="flex flex-col items-center">
-          <h1 className="text-4xl font-bold">
-            <TypeAnimation
-              sequence={['PythSource', 1000]}
-              cursor={false}
-              speed={200}
-            />
-          </h1>
-          <h2 className="text-2xl">
-            <TypeAnimation
-              sequence={[
-                'A small, fully-remote development team from Europe.',
-                1000,
-              ]}
-              cursor={false}
-              speed={150}
-            />
-          </h2>
-          <h2 className="text-2xl">
-            Active since{' '}
-            <span className="underline">
-              <TypeAnimation sequence={['2018.', 1000]} speed={400} />
-            </span>
-          </h2>
-        </div>
-        <div className="flex flex-col mt-1/4">
-          <h1 className="text-2xl font-bold border-b border-color-default">
-            Some of our most important projects
-          </h1>
-          <div className="flex justify-center flex-row gap-2 mt-3">
-            <a href="/projects/data-point">{DataPointLogo()}</a>
-          </div>
-        </div>
-      </div>
+      <div className="w-full h-full"></div>
     </>
   )
 }
