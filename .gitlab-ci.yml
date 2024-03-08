@@ -10,10 +10,6 @@ build:
   script:
     - npm install
     - npm run build
-  artifacts:
-    paths:
-      - dist/
-    when: on_success
 
 lint:
   tags:
