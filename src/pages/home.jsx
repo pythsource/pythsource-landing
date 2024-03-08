@@ -1,5 +1,5 @@
 import { TypeAnimation } from 'react-type-animation'
-import hfactions from '../assets/images/hfactions_presentation.png'
+import hfactions from '../assets/images/hfactions_presentation.jpg'
 
 export default function Home() {
   return (
