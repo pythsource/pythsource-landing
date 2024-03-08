@@ -1,5 +1,5 @@
 import { changeTitle } from '../main'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, Fragment } from 'react'
 import JobListing from '../components/job_listing'
 import moment from 'moment'
 import { MdNewReleases } from 'react-icons/md'
@@ -143,6 +143,21 @@ export default function Jobs() {
     filterJobs()
   }
 
+  const filterEntry = (_elementName, _category) => {
+    return (
+      <Fragment key={crypto.randomUUID()}>
+        <div className="filter-box">
+          <input
+            type="checkbox"
+            id={_elementName}
+            onChange={(_i) => updateEnabledFilters(_i, _category)}
+          ></input>
+          <label htmlFor={_elementName}>{_elementName}</label>
+        </div>
+      </Fragment>
+    )
+  }
+
   useEffect(() => {
     const populateJobs = async () => {
       try {
@@ -203,49 +218,13 @@ export default function Jobs() {
 
         var filters = []
         jsonResponse.jobCategories.map((_element) => {
-          filters.push(
-            <>
-              <div className="filter-box">
-                <input
-                  type="checkbox"
-                  key={crypto.randomUUID()}
-                  id={_element}
-                  onChange={(_i) => updateEnabledFilters(_i, 'category')}
-                ></input>
-                <label htmlFor={_element}>{_element}</label>
-              </div>
-            </>
-          )
+          filters.push(filterEntry(_element, 'category'))
         })
         jsonResponse.jobEmployments.map((_element) => {
-          filters.push(
-            <>
-              <div className="filter-box">
-                <input
-                  type="checkbox"
-                  key={crypto.randomUUID()}
-                  id={_element}
-                  onChange={(_i) => updateEnabledFilters(_i, 'employment')}
-                ></input>
-                <label htmlFor={_element}>{_element}</label>
-              </div>
-            </>
-          )
+          filters.push(filterEntry(_element, 'employment'))
         })
         jsonResponse.jobProjects.map((_element) => {
-          filters.push(
-            <>
-              <div className="filter-box">
-                <input
-                  type="checkbox"
-                  key={crypto.randomUUID()}
-                  id={_element}
-                  onChange={(_i) => updateEnabledFilters(_i, 'project')}
-                ></input>
-                <label htmlFor={_element}>{_element}</label>
-              </div>
-            </>
-          )
+          filters.push(filterEntry(_element, 'project'))
         })
         setAvailableFilters(filters)
       } catch (error) {

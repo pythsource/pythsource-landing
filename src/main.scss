@@ -265,6 +265,7 @@ $default-text-highlight: #e0b98d;
   align-items: center;
   gap: 0.35rem;
   user-select: none;
+  transition: background-color 0.2s;
 
   input {
     appearance: none;
@@ -275,6 +276,10 @@ $default-text-highlight: #e0b98d;
     &:checked {
       background-color: #4b84cf;
     }
+  }
+
+  &:hover {
+    background-color: lighten($color: $default-background-dark, $amount: 3);
   }
 }
 

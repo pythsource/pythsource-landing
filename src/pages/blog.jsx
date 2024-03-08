@@ -1,5 +1,5 @@
 import { changeTitle } from '../main'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import BlogPost from '../components/blog_post'
 import moment from 'moment'
 import { MdNewReleases } from 'react-icons/md'
@@ -137,6 +137,21 @@ export default function Blog() {
     filterBlogs()
   }
 
+  const filterEntry = (_elementName, _category) => {
+    return (
+      <Fragment key={crypto.randomUUID()}>
+        <div className="filter-box">
+          <input
+            type="checkbox"
+            id={_elementName}
+            onChange={(_i) => updateEnabledFilters(_i, _category)}
+          ></input>
+          <label htmlFor={_elementName}>{_elementName}</label>
+        </div>
+      </Fragment>
+    )
+  }
+
   useEffect(() => {
     const populateBlog = async () => {
       try {
@@ -195,34 +210,10 @@ export default function Blog() {
 
         var filters = []
         jsonResponse.blogCategories.map((_element) => {
-          filters.push(
-            <>
-              <div className="filter-box">
-                <input
-                  type="checkbox"
-                  key={crypto.randomUUID()}
-                  id={_element}
-                  onChange={(_i) => updateEnabledFilters(_i, 'category')}
-                ></input>
-                <label htmlFor={_element}>{_element}</label>
-              </div>
-            </>
-          )
+          filters.push(filterEntry(_element, 'category'))
         })
         jsonResponse.blogAuthors.map((_element) => {
-          filters.push(
-            <>
-              <div className="filter-box">
-                <input
-                  type="checkbox"
-                  key={crypto.randomUUID()}
-                  id={_element}
-                  onChange={(_i) => updateEnabledFilters(_i, 'author')}
-                ></input>
-                <label htmlFor={_element}>{_element}</label>
-              </div>
-            </>
-          )
+          filters.push(filterEntry(_element, 'author'))
         })
         setAvailableFilters(filters)
       } catch (error) {
