@@ -2,6 +2,7 @@ import { MdCalendarMonth } from 'react-icons/md'
 import { changeTitle } from '../main'
 import { FaGithub } from 'react-icons/fa'
 import ProjectEntry from '../components/project_entry'
+import hfactions from '../assets/images/hfactions_title.png'
 
 export default function Projects() {
   changeTitle('Projects')
@@ -12,7 +13,9 @@ export default function Projects() {
         <div className="flex flex-col p-5 gap-5 bg-default-darkl border border-color-default rounded-md">
           <div className="flex flex-col">
             <div className="flex flex-col text-center items-center border-b border-color-default mb-3">
-              <h1 className="text-2xl">Data Point</h1>
+              <a href="/projects/data-point">
+                <h1 className="text-link text-2xl">Data Point</h1>
+              </a>
               <h2 className="text-lg text-dark italic">
                 A universe used by PythSource to develop different multimedia
                 projects. Constantly expanding.
@@ -43,12 +46,13 @@ export default function Projects() {
             <div className="flex text-center flex-col items-center border-b border-color-default mb-3">
               <h1 className="text-2xl">World Factions</h1>
               <h2 className="text-lg text-dark italic">
-                A scrapped universe previously used by PythSource. A predecessor to Data Point.
+                A scrapped universe previously used by PythSource. A predecessor
+                to Data Point.
               </h2>
             </div>
             <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
-                imgSrc="https://cdn.discordapp.com/attachments/293011429555044354/1209895853687574638/h.png?ex=65f1d0d2&is=65df5bd2&hm=7995ece83781186e2b83120c9a13c807787b0fa330af856ed3fea8c3e2bb7586&"
+                imgSrc={hfactions}
                 title="HFactions"
                 description="A Hearts Of Iron IV modification, depicting the events of World Factions from 2019 to 2021."
                 links={

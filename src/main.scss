@@ -200,7 +200,7 @@ $default-text-highlight: #e0b98d;
   width: 100%;
   height: 93.5%;
   animation: background-appear 2.5s;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 @keyframes background-appear {

@@ -1,14 +1,14 @@
-import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { changeTitle } from '../main'
-import { TypeAnimation } from 'react-type-animation'
+import world_factions from '../assets/images/world_factions.png'
+import { FaGithub } from 'react-icons/fa'
 
 function DataPointLogo() {
   return (
     <svg
       className="DPLogo"
       id="outputsvg"
-      width="500.3627"
-      height="60.74036"
+      width="400.3627"
+      height="50.74036"
       viewBox="0 0 14933.627 2757.4036"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,63 @@ export default function About() {
 
   return (
     <>
-      <div className="w-full h-full"></div>
+      <div className="w-full h-full">
+        <div className="flex flex-col w-full pl-5 pt-5 gap-10">
+          <div>
+            <h1 className="text-3xl">PythSource</h1>
+            <h2 className="text-lg">
+              A small, fully remote development team from Europe.
+            </h2>
+            <h2 className="text-lg">
+              Founded in 2018, we've been active ever since.
+            </h2>
+          </div>
+          <div>
+            <h1 className="text-3xl">Our team</h1>
+            <div className="flex flex-col md:flex-row gap-3 mt-2 border-t border-b border-color-default pt-5 pb-5">
+              <div className="flex gap-4 bg-default-darkl border border-color-default p-3 rounded">
+                <img
+                  className="w-25 rounded-full"
+                  src="https://avatars.githubusercontent.com/u/41019056?v=4"
+                ></img>
+                <div className="flex justify-center flex-col gap">
+                  <p>URAKOLOUY5</p>
+                  <p className="text-blue-400">Co-founder</p>
+                  <p className="text-dark">
+                    Full-Stack (frontend specialization)
+                  </p>
+                  <a href="https://github.com/URAKOLOUY5">
+                    <FaGithub size={25} />
+                  </a>
+                </div>
+              </div>
+              <div className="flex gap-4 bg-default-darkl border border-color-default p-3 rounded">
+                <img
+                  className="w-25 rounded-full"
+                  src="https://avatars.githubusercontent.com/u/39655269?v=4"
+                ></img>
+                <div className="flex justify-center flex-col gap">
+                  <p>IDEXV</p>
+                  <p className="text-blue-400">Co-founder</p>
+                  <p className="text-dark">
+                    Full-Stack (backend specialization)
+                  </p>
+                  <a href="https://github.com/IDEXV">
+                    <FaGithub size={25} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h1 className="text-3xl">Our most valuable projects</h1>
+            <div className="flex flex-col md:flex-row gap-5 mt-2 items-center border-t border-b border-color-default pt-5 pb-5">
+              <a href="/projects/data-point">{DataPointLogo()}</a>
+              <img className="w-24" src={world_factions}></img>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
