@@ -4,7 +4,7 @@ import { changeTitle } from '../main'
 import Markdown from 'react-markdown'
 
 export default function BlogPage() {
-  const [blogContent, setBlogContent] = useState('TODO: Empty')
+  const [blogContent, setBlogContent] = useState()
   const pageParams = useParams()
 
   const fetchBlog = async (_pageParams) => {
@@ -18,7 +18,7 @@ export default function BlogPage() {
 
       const responseData = await response.json()
       if (responseData.length == 0) {
-        setBlogContent('TODO: Empty response')
+        setBlogContent('There was an issue fetching the blog\'s content.')
       }
 
       setBlogContent(responseData.blogPost.blogContent)
@@ -34,7 +34,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Markdown>{blogContent ?? 'TODO: Loading...'}</Markdown>
+      <Markdown>{blogContent ?? 'Loading...'}</Markdown>
     </>
   )
 }

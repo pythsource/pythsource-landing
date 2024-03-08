@@ -18,7 +18,7 @@ export default function Projects() {
                 projects. Constantly expanding.
               </h2>
             </div>
-            <div className="flex flex-col md:flex-row gap-1.5">
+            <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 title="Global Information Repository"
                 description="A wiki for the Data Point project, taken from the perspective of the ITREWN."
@@ -29,7 +29,6 @@ export default function Projects() {
                 }
               />
               <ProjectEntry
-                imgSrc="https://cdn.discordapp.com/attachments/293011429555044354/1211733533601824908/image.png?ex=65ef45cb&is=65dcd0cb&hm=7b605983c30e059afa0b99d149c9c2843e74d8f599bfc13a1fb500bab7cba4d2&"
                 title="Project Seen"
                 description="A Source™ modification, depicting the events of the Celas' Revolution."
                 links={
@@ -44,11 +43,10 @@ export default function Projects() {
             <div className="flex text-center flex-col items-center border-b border-color-default mb-3">
               <h1 className="text-2xl">World Factions</h1>
               <h2 className="text-lg text-dark italic">
-                A scrapped universe, previously used by PythSource to develop
-                projects. A predecessor to Data Point.
+                A scrapped universe previously used by PythSource. A predecessor to Data Point.
               </h2>
             </div>
-            <div className="flex flex-col md:flex-row gap-1.5">
+            <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 imgSrc="https://cdn.discordapp.com/attachments/293011429555044354/1209895853687574638/h.png?ex=65f1d0d2&is=65df5bd2&hm=7995ece83781186e2b83120c9a13c807787b0fa330af856ed3fea8c3e2bb7586&"
                 title="HFactions"
@@ -70,7 +68,7 @@ export default function Projects() {
                 Projects that don't fit into any other categories.
               </h2>
             </div>
-            <div className="flex flex-col md:flex-row gap-1.5">
+            <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 title="ZS-Navmeshes"
                 description="Additional navmeshes to be used with D3Bot - a Zombie Survival addon for Garry's Mod."

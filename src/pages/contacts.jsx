@@ -1,6 +1,6 @@
-import { FaGithub, FaGitlab, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaGitlab, FaJira, FaYoutube } from 'react-icons/fa'
 import { changeTitle } from '../main'
-import { MdAlternateEmail, MdGamepad, MdViewKanban } from 'react-icons/md'
+import { MdAlternateEmail, MdGamepad } from 'react-icons/md'
 
 export default function Contacts() {
   changeTitle('Contacts')
@@ -68,7 +68,7 @@ export default function Contacts() {
                   className="flex gap-2 items-center"
                   href="https://issues.pythsource.com"
                 >
-                  <MdViewKanban size={35} /> Issue Tracker
+                  <FaJira size={35} /> Issue Tracker
                 </a>
               </div>
             </div>

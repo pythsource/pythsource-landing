@@ -36,7 +36,6 @@ export default function Home() {
                   '> Software Development',
                   2500,
                 ]}
-                cursor={true}
                 speed={200}
                 repeat={Infinity}
               />
@@ -50,7 +49,16 @@ export default function Home() {
             className="home-background"
           ></img>
           <div className="home-imagetext">
-            <TypeAnimation sequence={['Typical Project Seen Street', 1000]} />
+            <TypeAnimation
+              sequence={[
+                'Typical Project Seen Street',
+                2500,
+                'Praject Seenability',
+                2500,
+              ]}
+              speed={200}
+              repeat={Infinity}
+            />
           </div>
         </div>
       </div>

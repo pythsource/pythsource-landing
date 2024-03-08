@@ -16,7 +16,7 @@ export default function Blog() {
 
   const presentBlog = () => {
     if (rawPosts.current.length === 0) {
-      setBlogPosts('TODO: Empty response')
+      setBlogPosts('There was an issue fetching the blogs.')
     }
 
     setBlogPosts(
@@ -148,12 +148,12 @@ export default function Blog() {
         )
 
         if (httpResponse.status !== 200) {
-          setBlogPosts('TODO: Unable to receive blogs')
+          setBlogPosts('Unable to fetch the blogs.')
         }
 
         const jsonResponse = await httpResponse.json()
         if (jsonResponse.length === 0) {
-          setBlogPosts('TODO: Empty response')
+          setBlogPosts('There was an issue fetching the blogs.')
         }
 
         rawPosts.current = jsonResponse.blogPosts.map((_post) => {
@@ -185,12 +185,12 @@ export default function Blog() {
         )
 
         if (httpResponse.status !== 200) {
-          setAvailableFilters('TODO: Unable to receive filters')
+          setAvailableFilters('Unable to fetch filters.')
         }
 
         const jsonResponse = await httpResponse.json()
         if (jsonResponse.length === 0) {
-          setAvailableFilters('TODO: Empty response')
+          setAvailableFilters('There was an issue fetching the filters.')
         }
 
         var filters = []
@@ -252,12 +252,12 @@ export default function Blog() {
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
           <div className="flex flex-col gap-1">
-            {availableFilters ?? 'TODO: Loading...'}
+            {availableFilters ?? 'Loading...'}
           </div>
         </div>
         <div className="p-3 w-full overflow-auto">
           <div className="flex flex-col gap-2 slide-top">
-            {blogPosts ?? 'TODO: Loading...'}
+            {blogPosts ?? 'Loading...'}
           </div>
         </div>
       </div>

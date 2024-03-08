@@ -16,7 +16,7 @@ export default function Jobs() {
 
   const presentJobs = () => {
     if (rawPosts.current.length === 0) {
-      setJobPosts('TODO: Empty response')
+      setJobPosts('There was an issue fetching the jobs.')
     }
 
     setJobPosts(
@@ -154,12 +154,12 @@ export default function Jobs() {
         )
 
         if (httpResponse.status !== 200) {
-          setJobPosts('TODO: Unable to receive jobs')
+          setJobPosts('Unable to fetch the jobs.')
         }
 
         const jsonResponse = await httpResponse.json()
         if (jsonResponse.length === 0) {
-          setJobPosts('TODO: Empty response')
+          setJobPosts('There was an issue fetching the jobs.')
         }
 
         rawPosts.current = jsonResponse.jobPosts.map((_post) => {
@@ -193,12 +193,12 @@ export default function Jobs() {
         )
 
         if (httpResponse.status !== 200) {
-          setAvailableFilters('TODO: Unable to receive filters')
+          setAvailableFilters('Unable to fetch the filters.')
         }
 
         const jsonResponse = await httpResponse.json()
         if (jsonResponse.length === 0) {
-          setAvailableFilters('TODO: Empty response')
+          setAvailableFilters('There was an issue fetching the filters.')
         }
 
         var filters = []
@@ -275,12 +275,12 @@ export default function Jobs() {
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
           <div className="flex flex-col gap-1">
-            {availableFilters ?? 'TODO: Loading...'}
+            {availableFilters ?? 'Loading...'}
           </div>
         </div>
         <div className="p-3 w-full overflow-auto">
           <div className="flex flex-col gap-2 slide-top">
-            {jobPosts ?? 'TODO: Loading...'}
+            {jobPosts ?? 'Loading...'}
           </div>
         </div>
       </div>
