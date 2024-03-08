@@ -1,6 +1,7 @@
 import { changeTitle } from '../main'
 import world_factions from '../assets/images/world_factions.png'
 import { FaGithub } from 'react-icons/fa'
+import { TypeAnimation } from 'react-type-animation'
 
 function DataPointLogo() {
   return (
@@ -106,7 +107,9 @@ export default function About() {
       <div className="w-full h-full">
         <div className="flex flex-col w-full pl-5 pt-5 gap-10">
           <div>
-            <h1 className="text-3xl">PythSource</h1>
+            <h1 className="text-3xl">
+              <TypeAnimation sequence={['PythSource', 2500]} speed={200} />
+            </h1>
             <h2 className="text-lg">
               A small, fully remote development team from Europe.
             </h2>
@@ -115,7 +118,13 @@ export default function About() {
             </h2>
           </div>
           <div>
-            <h1 className="text-3xl">Our team</h1>
+            <h1 className="text-3xl">
+              <TypeAnimation
+                sequence={['Our team', 2500]}
+                speed={200}
+                cursor={false}
+              />
+            </h1>
             <div className="flex flex-col md:flex-row gap-3 mt-2 border-t border-b border-color-default pt-5 pb-5">
               <div className="flex gap-4 bg-default-darkl border border-color-default p-3 rounded">
                 <img
@@ -152,9 +161,15 @@ export default function About() {
             </div>
           </div>
           <div>
-            <h1 className="text-3xl">Our most valuable projects</h1>
+            <h1 className="text-3xl">
+              <TypeAnimation
+                sequence={['Our most valuable projects', 2500]}
+                speed={200}
+                cursor={false}
+              />
+            </h1>
             <div className="flex flex-col md:flex-row gap-5 mt-2 items-center border-t border-b border-color-default pt-5 pb-5">
-              <a href="/projects/data-point">{DataPointLogo()}</a>
+              {DataPointLogo()}
               <img className="w-24" src={world_factions}></img>
             </div>
           </div>

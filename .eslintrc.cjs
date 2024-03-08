@@ -16,6 +16,7 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'semi': ['error', 'never'],
     'quotes': ['error', 'single'],
+    'react-hooks/exhaustive-deps': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

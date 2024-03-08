@@ -13,15 +13,13 @@ export default function Projects() {
         <div className="flex flex-col p-5 gap-5 bg-default-darkl border border-color-default rounded-md">
           <div className="flex flex-col">
             <div className="flex flex-col text-center items-center border-b border-color-default mb-3">
-              <a href="/projects/data-point">
-                <h1 className="text-link text-2xl">Data Point</h1>
-              </a>
+              <h1 className="text-2xl">Data Point</h1>
               <h2 className="text-lg text-dark italic">
                 A universe used by PythSource to develop different multimedia
                 projects. Constantly expanding.
               </h2>
             </div>
-            <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
+            <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 title="Global Information Repository"
                 description="A wiki for the Data Point project, taken from the perspective of the ITREWN."
@@ -50,7 +48,7 @@ export default function Projects() {
                 to Data Point.
               </h2>
             </div>
-            <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
+            <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 imgSrc={hfactions}
                 title="HFactions"
@@ -72,7 +70,7 @@ export default function Projects() {
                 Projects that don't fit into any other categories.
               </h2>
             </div>
-            <div className="flex md:items-baseline flex-col md:flex-row gap-1.5">
+            <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 title="ZS-Navmeshes"
                 description="Additional navmeshes to be used with D3Bot - a Zombie Survival addon for Garry's Mod."

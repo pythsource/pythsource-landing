@@ -9,7 +9,7 @@ export default function Home() {
           <div className="home-text">
             <h1 className="home-title">
               <TypeAnimation
-                sequence={['PythSource', 1000]}
+                sequence={['PythSource', 2500]}
                 cursor={false}
                 speed={200}
               />

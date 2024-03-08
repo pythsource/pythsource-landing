@@ -91,7 +91,7 @@ export default function Blog() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ filters: enabledFilters.current }),
+      body: JSON.stringify({ Filters: enabledFilters.current }),
     })
 
     const responseBody = await response.json()
@@ -125,12 +125,12 @@ export default function Blog() {
   const updateEnabledFilters = (_inputElement, _type) => {
     if (_inputElement.target.checked) {
       enabledFilters.current = [
-        { name: _inputElement.target.name, type: _type },
+        { name: _inputElement.target.id, type: _type },
         ...enabledFilters.current,
       ]
     } else {
       enabledFilters.current = enabledFilters.current.filter(
-        (_e) => _e.name !== _inputElement.target.name
+        (_e) => _e.name !== _inputElement.target.id
       )
     }
 
