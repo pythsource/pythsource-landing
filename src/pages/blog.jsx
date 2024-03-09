@@ -16,7 +16,12 @@ export default function Blog() {
 
   const presentBlog = () => {
     if (rawPosts.current.length === 0) {
-      setBlogPosts('There was an issue fetching the blogs.')
+      setBlogPosts(
+        <div className="notification">
+          There are currently no blog posts available.
+        </div>
+      )
+      return
     }
 
     setBlogPosts(
@@ -58,6 +63,15 @@ export default function Blog() {
       filteredBlogs = rawPosts.current
     }
 
+    if (filteredBlogs.length === 0) {
+      setBlogPosts(
+        <div className="notification">
+          There are no blog posts available based off your search.
+        </div>
+      )
+      return
+    }
+
     setBlogPosts(
       filteredBlogs.map((_post) => {
         return (
@@ -95,6 +109,15 @@ export default function Blog() {
     })
 
     const responseBody = await response.json()
+    if (responseBody.blogPosts.length === 0) {
+      setBlogPosts(
+        <div className="notification">
+          There are no blog posts available based on your preferences.
+        </div>
+      )
+      return
+    }
+
     setBlogPosts(
       responseBody.blogPosts.map((_post) => {
         return (
@@ -164,13 +187,10 @@ export default function Blog() {
 
         if (httpResponse.status !== 200) {
           setBlogPosts('Unable to fetch the blogs.')
+          return
         }
 
         const jsonResponse = await httpResponse.json()
-        if (jsonResponse.length === 0) {
-          setBlogPosts('There was an issue fetching the blogs.')
-        }
-
         rawPosts.current = jsonResponse.blogPosts.map((_post) => {
           return {
             id: _post.postId,
@@ -201,11 +221,17 @@ export default function Blog() {
 
         if (httpResponse.status !== 200) {
           setAvailableFilters('Unable to fetch filters.')
+          return
         }
 
         const jsonResponse = await httpResponse.json()
-        if (jsonResponse.length === 0) {
-          setAvailableFilters('There was an issue fetching the filters.')
+        if (jsonResponse.blogPosts.length === 0) {
+          setAvailableFilters(
+            <div className="notification">
+              <i>There are currently no filters available.</i>
+            </div>
+          )
+          return
         }
 
         var filters = []
@@ -243,12 +269,20 @@ export default function Blog() {
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
           <div className="flex flex-col gap-1">
-            {availableFilters ?? 'Loading...'}
+            {availableFilters ?? (
+              <div className="notification">
+                <i>Loading...</i>
+              </div>
+            )}
           </div>
         </div>
         <div className="p-3 w-full overflow-auto">
           <div className="flex flex-col gap-2 slide-top">
-            {blogPosts ?? 'Loading...'}
+            {blogPosts ?? (
+              <div className="notification">
+                <i>Loading...</i>
+              </div>
+            )}
           </div>
         </div>
       </div>

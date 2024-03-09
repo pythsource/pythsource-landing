@@ -34,7 +34,13 @@ export default function BlogPage() {
 
   return (
     <>
-      <Markdown>{blogContent ?? 'Loading...'}</Markdown>
+      <Markdown>
+        {blogContent ?? (
+          <div className="notification">
+            <i>Loading...</i>
+          </div>
+        )}
+      </Markdown>
     </>
   )
 }

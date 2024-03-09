@@ -226,6 +226,14 @@ $default-text-highlight: #e0b98d;
   animation: slide-top 1.5s;
 }
 
+.notification {
+  background: darken($color: $default-background-light, $amount: 3.5);
+  border: 1px solid lighten($color: $default-border-color, $amount: 10);
+  padding: 0.25rem;
+  user-select: none;
+  text-align: center;
+}
+
 @keyframes slide-top {
   0% {
     transform: translateY(-50rem);

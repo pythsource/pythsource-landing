@@ -16,7 +16,12 @@ export default function Jobs() {
 
   const presentJobs = () => {
     if (rawPosts.current.length === 0) {
-      setJobPosts('There was an issue fetching the jobs.')
+      setJobPosts(
+        <div className="notification">
+          There are currently no jobs available.
+        </div>
+      )
+      return
     }
 
     setJobPosts(
@@ -60,6 +65,15 @@ export default function Jobs() {
       filteredJobs = rawPosts.current
     }
 
+    if (filteredJobs.length === 0) {
+      setJobPosts(
+        <div className="notification">
+          There are no jobs available based off your search.
+        </div>
+      )
+      return
+    }
+
     setJobPosts(
       filteredJobs.map((_post) => {
         return (
@@ -99,6 +113,15 @@ export default function Jobs() {
     })
 
     const responseBody = await response.json()
+    if (responseBody.jobPosts.length === 0) {
+      setJobPosts(
+        <div className="notification">
+          There are no jobs available based on your preferences.
+        </div>
+      )
+      return
+    }
+
     setJobPosts(
       responseBody.jobPosts.map((_post) => {
         return (
@@ -170,13 +193,10 @@ export default function Jobs() {
 
         if (httpResponse.status !== 200) {
           setJobPosts('Unable to fetch the jobs.')
+          return
         }
 
         const jsonResponse = await httpResponse.json()
-        if (jsonResponse.length === 0) {
-          setJobPosts('There was an issue fetching the jobs.')
-        }
-
         rawPosts.current = jsonResponse.jobPosts.map((_post) => {
           return {
             id: _post.jobId,
@@ -209,11 +229,17 @@ export default function Jobs() {
 
         if (httpResponse.status !== 200) {
           setAvailableFilters('Unable to fetch the filters.')
+          return
         }
 
         const jsonResponse = await httpResponse.json()
-        if (jsonResponse.length === 0) {
-          setAvailableFilters('There was an issue fetching the filters.')
+        if (jsonResponse.jobPosts.length === 0) {
+          setAvailableFilters(
+            <div className="notification">
+              <i>There are currently no filters available.</i>
+            </div>
+          )
+          return
         }
 
         var filters = []
@@ -254,12 +280,20 @@ export default function Jobs() {
           <hr className="border-color-default mt-2 mb-2" />
           <span>Filters:</span>
           <div className="flex flex-col gap-1">
-            {availableFilters ?? 'Loading...'}
+            {availableFilters ?? (
+              <div className="notification">
+                <i>Loading...</i>
+              </div>
+            )}
           </div>
         </div>
         <div className="p-3 w-full overflow-auto">
           <div className="flex flex-col gap-2 slide-top">
-            {jobPosts ?? 'Loading...'}
+            {jobPosts ?? (
+              <div className="notification">
+                <i>Loading...</i>
+              </div>
+            )}
           </div>
         </div>
       </div>
