@@ -7,7 +7,7 @@ export default function ProjectEntry({ imgSrc, title, description, links }) {
         <div className="border-b border-color-default">
           <img
             className="object-cover w-full h-24"
-            src={imgSrc ? imgSrc : 'https://pythsource.com/pythsource_logo.png'}
+            src={imgSrc ? imgSrc : 'https://pythsource.com/images/pythsource_logo.png'}
           ></img>
         </div>
         <div className="basis-1/2 p-2 border-b border-color-default">
