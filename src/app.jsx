@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { FaGitlab, FaGithub } from 'react-icons/fa'
 import { MdAlternateEmail } from 'react-icons/md'
 import { parseLocale } from './main.jsx'
+import ru_flag from './assets/images/ru_flag.png'
+import us_flag from './assets/images/us_flag.png'
 
 export default function App({ children }) {
   const params = useParams()
@@ -54,14 +56,20 @@ export default function App({ children }) {
         <footer className="page-footer border-color-default bg-default-dark text-footer">
           <div>© {new Date().getFullYear()} PythSource</div>
           <div className="link-list_footer">
+            <a href="https://pythsource.com">
+              <img alt='US Flag' src={us_flag} className='h-3.5'></img>
+            </a>
+            <a href="https://pythsource.com/ru">
+              <img alt='Russian Flag' src={ru_flag} className='h-3.5'></img>
+            </a>
             <a href="https://git.pythsource.com/explore">
-              <FaGitlab size={25} />
+              <FaGitlab size={25}/>
             </a>
             <a href="https://github.com/pythsource">
-              <FaGithub size={25} />
+              <FaGithub size={25}/>
             </a>
             <a href="mailto:pythsource.official@gmail.com">
-              <MdAlternateEmail size={25} />
+              <MdAlternateEmail size={25}/>
             </a>
           </div>
         </footer>
