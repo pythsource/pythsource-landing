@@ -1,7 +1,12 @@
 import { TypeAnimation } from 'react-type-animation'
 import hfactions from '../assets/images/hfactions_presentation.jpg'
+import { useParams } from 'react-router'
+import { parseLocale } from '../main.jsx'
 
 export default function Home() {
+    const params = useParams()
+    const localeInfo = parseLocale(params['lang'])
+
   return (
     <>
       <div className="home-row">
@@ -17,11 +22,11 @@ export default function Home() {
             <h2 className="home-subtitle">
               <TypeAnimation
                 sequence={[
-                  '> Game Development',
+                    localeInfo.isRussian ? '> Разработка игр' : '> Game Development',
                   2500,
-                  '> Web Development',
+                  localeInfo.isRussian ? '> Веб-разработка' : '> Web Development',
                   2500,
-                  '> Software Development',
+                  localeInfo.isRussian ? '> Разработка ПО' : '> Software Development',
                   2500,
                 ]}
                 speed={200}

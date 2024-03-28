@@ -13,6 +13,7 @@ import Contacts from './pages/contacts'
 import Jobs from './pages/jobs'
 import Blog from './pages/blog'
 import BlogPage from './pages/blog_page'
+import Services from './pages/services.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,31 +26,35 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/',
+        path: '/:lang?',
         element: <Home />,
       },
       {
-        path: '/about',
+        path: '/:lang?/about',
         element: <About />,
       },
       {
-        path: '/projects',
+        path: '/:lang?/projects',
         element: <Projects />,
       },
       {
-        path: '/contacts',
+        path: '/:lang?/contacts',
         element: <Contacts />,
       },
       {
-        path: '/jobs',
+        path: '/:lang?/jobs',
         element: <Jobs />,
       },
       {
-        path: '/blog',
+        path: '/:lang?/blog',
         element: <Blog />,
       },
       {
-        path: '/blog/post/:pageName',
+        path: '/:lang?/services',
+        element: <Services />,
+      },
+      {
+        path: '/:lang?/blog/post/:pageName',
         element: <BlogPage />,
       },
     ],
@@ -62,8 +67,18 @@ export const changeTitle = (pageTitle, bare = false) => {
     : (document.title = `PythSource - ${pageTitle}`)
 }
 
-export const fakeButton = (buttonId) => {
-  document.getElementById(buttonId).classList.add('bg-default-light')
+export const parseLocale = (languageCode) => {
+  if (languageCode === 'ru') {
+    return {
+      code: languageCode,
+      isRussian: true,
+    }
+  } else {
+    return {
+      code: '',
+      isRussian: false,
+    }
+  }
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(

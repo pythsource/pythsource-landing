@@ -1,7 +1,8 @@
-import { changeTitle } from '../main'
+import { changeTitle, parseLocale } from '../main'
 import world_factions from '../assets/images/world_factions.png'
 import { FaGithub } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
+import { useParams } from 'react-router'
 
 function DataPointLogo() {
   return (
@@ -100,7 +101,10 @@ function DataPointLogo() {
 }
 
 export default function About() {
-  changeTitle('About')
+  const params = useParams()
+  const localeInfo = parseLocale(params['lang'])
+
+  changeTitle(localeInfo.isRussian ? 'О команде' : 'About')
 
   return (
     <>
@@ -111,16 +115,16 @@ export default function About() {
               <TypeAnimation sequence={['PythSource', 2500]} speed={200} />
             </h1>
             <h2 className="text-lg">
-              A small, fully remote development team from Europe.
+              {localeInfo.isRussian ? 'Небольшая, полностью удаленная команда разработчиков из Европы.' : 'A small, fully remote development team from Europe.'}
             </h2>
             <h2 className="text-lg">
-              Founded in 2018, we've been active ever since.
+              {localeInfo.isRussian ? 'Основавшись в 2018 году, мы продолжаем вести свою деятельность.' : 'Founded in 2018, we\'ve been active ever since.'}
             </h2>
           </div>
           <div>
             <h1 className="text-3xl">
               <TypeAnimation
-                sequence={['Our team', 2500]}
+                sequence={[localeInfo.isRussian ? 'Наша команда' : 'Our team', 2500]}
                 speed={200}
                 cursor={false}
               />
@@ -133,9 +137,9 @@ export default function About() {
                 ></img>
                 <div className="flex justify-center flex-col gap">
                   <p>URAKOLOUY5</p>
-                  <p className="text-blue-400">Co-founder</p>
+                  <p className="text-blue-400">{localeInfo.isRussian ? 'Сооснователь' : 'Co-founder'}</p>
                   <p className="text-dark">
-                    Full-Stack (frontend specialization)
+                    {localeInfo.isRussian ? 'Full-Stack (фронтенд специализация)' : 'Full-Stack (frontend specialization)'}
                   </p>
                   <a href="https://github.com/URAKOLOUY5">
                     <FaGithub size={25} />
@@ -149,9 +153,9 @@ export default function About() {
                 ></img>
                 <div className="flex justify-center flex-col gap">
                   <p>IDEXV</p>
-                  <p className="text-blue-400">Co-founder</p>
+                  <p className="text-blue-400">{localeInfo.isRussian ? 'Сооснователь' : 'Co-founder'}</p>
                   <p className="text-dark">
-                    Full-Stack (backend specialization)
+                    {localeInfo.isRussian ? 'Full-Stack (бэкенд специализация)' : 'Full-Stack (backend specialization)'}
                   </p>
                   <a href="https://github.com/IDEXV">
                     <FaGithub size={25} />
@@ -163,7 +167,7 @@ export default function About() {
           <div>
             <h1 className="text-3xl">
               <TypeAnimation
-                sequence={['Our most valuable projects', 2500]}
+                sequence={[localeInfo.isRussian ? 'Наши наиболее значимые проекты' : 'Our most valuable projects', 2500]}
                 speed={200}
                 cursor={false}
               />
