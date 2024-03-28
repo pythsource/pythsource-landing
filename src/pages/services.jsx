@@ -8,8 +8,7 @@ function ServicesPage() {
                 <div className='flex flex-col h-full gap-3'>
                     <div className='border-color-default border-l-2 pl-2'>
                         <h1 className='text-2xl font-bold border-b border-color-default mb-1 pb-1'>Услуги</h1>
-                        <h2>Мы предоставляем аутсорсинговые услуги в сфере IT. Наша небольшая команда готова взяться за
-                            выполнение различных задач, которые вы поставите перед нами.</h2>
+                        <h2>Мы предоставляем аутсорсинговые услуги в сфере IT.</h2>
                         <h3>Чтобы связаться с нами по поводу услуги, напишите нам на электронную почту — <a className='text-link' href='mailto:pythsource.official@gmail.com'>pythsource.official@gmail.com</a></h3>
                         <h3 className='mt-3'>Стоимость услуг зависит от сложности и размеров поставленной задачи. Средняя стоимость услуг предоставлена как ориентировочная и не является гарантированной.</h3>
                     </div>
