@@ -1,11 +1,15 @@
-import { changeTitle } from '../main'
+import { changeTitle, parseLocale } from '../main'
 import { useEffect, useRef, useState, Fragment } from 'react'
 import JobListing from '../components/job_listing'
 import moment from 'moment'
 import { MdNewReleases } from 'react-icons/md'
+import { useParams } from 'react-router'
 
 export default function Jobs() {
-  changeTitle('Jobs')
+  const params = useParams()
+  const localeInfo = parseLocale(params['lang'])
+
+  changeTitle(localeInfo.isRussian ? 'Вакансии' : 'Jobs')
 
   var rawPosts = useRef()
   const [jobPosts, setJobPosts] = useState()
@@ -18,7 +22,7 @@ export default function Jobs() {
     if (rawPosts.current.length === 0) {
       setJobPosts(
         <div className="notification">
-          There are currently no jobs available.
+          {localeInfo.isRussian ? 'В настоящее время вакансий нет.' : 'There are currently no jobs available.'}
         </div>
       )
       return
@@ -41,7 +45,7 @@ export default function Jobs() {
               moment().isBefore(moment(_post.date).add(5, 'days')) ? (
                 <div className="job-badge">
                   <MdNewReleases size={17} />
-                  Recent
+                  {localeInfo.isRussian ? 'Свежее' : 'Recent'}
                 </div>
               ) : (
                 ''
@@ -68,7 +72,7 @@ export default function Jobs() {
     if (filteredJobs.length === 0) {
       setJobPosts(
         <div className="notification">
-          There are no jobs available based off your search.
+          {localeInfo.isRussian ? 'По вашему запросу нет вакансий.' : 'There are no job postings available based off your search.'}
         </div>
       )
       return
@@ -91,7 +95,7 @@ export default function Jobs() {
               moment().isBefore(moment(_post.date).add(5, 'days')) ? (
                 <div className="job-badge">
                   <MdNewReleases size={17} />
-                  Recent
+                  {localeInfo.isRussian ? 'Свежее' : 'Recent'}
                 </div>
               ) : (
                 ''
@@ -116,7 +120,7 @@ export default function Jobs() {
     if (responseBody.jobPosts.length === 0) {
       setJobPosts(
         <div className="notification">
-          There are no jobs available based on your preferences.
+          {localeInfo.isRussian ? 'Нет вакансий, соответствующих вашим предпочтениям.' : 'There are no job postings available based on your preferences.'}
         </div>
       )
       return
@@ -139,7 +143,7 @@ export default function Jobs() {
               moment().isBefore(moment(_post.jobDate).add(5, 'days')) ? (
                 <div className="job-badge">
                   <MdNewReleases size={17} />
-                  Recent
+                  {localeInfo.isRussian ? 'Свежее' : 'Recent'}
                 </div>
               ) : (
                 ''
@@ -192,7 +196,7 @@ export default function Jobs() {
         )
 
         if (httpResponse.status !== 200) {
-          setJobPosts('Unable to fetch the jobs.')
+          setJobPosts(localeInfo.isRussian ? 'Не удалось получить вакансии.' : 'Unable to fetch job postings.')
           return
         }
 
@@ -228,7 +232,7 @@ export default function Jobs() {
         )
 
         if (httpResponse.status !== 200) {
-          setAvailableFilters('Unable to fetch the filters.')
+          setAvailableFilters(localeInfo.isRussian ? 'Не удалось получить поисковые фильтры.' : 'Unable to fetch filters.')
           return
         }
 
@@ -236,7 +240,7 @@ export default function Jobs() {
         if (jsonResponse.jobPosts.length === 0) {
           setAvailableFilters(
             <div className="notification">
-              <i>There are currently no filters available.</i>
+              <i>{localeInfo.isRussian ? 'В настоящее время поисковые фильтры не доступны.' : 'There are currently no filters available.'}</i>
             </div>
           )
           return
@@ -269,7 +273,7 @@ export default function Jobs() {
     <>
       <div className="flex flex-col md:flex-row bg-default w-full h-full border border-color-default rounded-xl">
         <div className="flex bg-default-darkl flex-col border-b md:border-r md:border-b-0 border-color-default md:w-1/5 p-3">
-          <span>Search:</span>
+          <span>{localeInfo.isRussian ? 'Поиск' : 'Search'}:</span>
           <input
             value={searchPrompt}
             onChange={(e) => {
@@ -278,7 +282,7 @@ export default function Jobs() {
             className="bg-default-dark border border-color-default rounded p-1"
           ></input>
           <hr className="border-color-default mt-2 mb-2" />
-          <span>Filters:</span>
+          <span>{localeInfo.isRussian ? 'Фильтры' : 'Filters'}:</span>
           <div className="flex flex-col gap-1">
             {availableFilters ?? (
               <div className="notification">
