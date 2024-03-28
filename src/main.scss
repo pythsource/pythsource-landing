@@ -235,6 +235,14 @@ $default-text-highlight: #e0b98d;
   text-align: center;
 }
 
+.warning {
+  background: darken($color: #8a6813, $amount: 3.5);
+  border: 1px solid lighten($color: #9a7717, $amount: 10);
+  padding: 0.25rem;
+  user-select: none;
+  text-align: center;
+}
+
 @keyframes slide-top {
   0% {
     transform: translateY(-50rem);
