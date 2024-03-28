@@ -1,11 +1,15 @@
-import { changeTitle } from '../main'
+import { changeTitle, parseLocale } from '../main'
 import { useState, useEffect, useRef, Fragment } from 'react'
 import BlogPost from '../components/blog_post'
 import moment from 'moment'
 import { MdNewReleases } from 'react-icons/md'
+import { useParams } from 'react-router'
 
 export default function Blog() {
-  changeTitle('Blog')
+  const params = useParams()
+  const localeInfo = parseLocale(params['lang'])
+
+  changeTitle(localeInfo.isRussian ? 'Блог' : 'Blog')
 
   var rawPosts = useRef()
   const [blogPosts, setBlogPosts] = useState()
@@ -18,7 +22,7 @@ export default function Blog() {
     if (rawPosts.current.length === 0) {
       setBlogPosts(
         <div className="notification">
-          There are currently no blog posts available.
+          {localeInfo.isRussian ? 'В настоящее время в блоге нет записей.' : 'There are currently no blog posts available.'}
         </div>
       )
       return
@@ -39,7 +43,7 @@ export default function Blog() {
               moment().isBefore(moment(_post.date).add(5, 'days')) ? (
                 <div className="job-badge">
                   <MdNewReleases size={17} />
-                  Recent
+                  {localeInfo.isRussian ? 'Свежее' : 'Recent'}
                 </div>
               ) : (
                 ''
@@ -66,7 +70,7 @@ export default function Blog() {
     if (filteredBlogs.length === 0) {
       setBlogPosts(
         <div className="notification">
-          There are no blog posts available based off your search.
+          {localeInfo.isRussian ? 'По вашему запросу не найдено ни одной записи в блоге.' : 'There are no blog posts available based off your search.'}
         </div>
       )
       return
@@ -87,7 +91,7 @@ export default function Blog() {
               moment().isBefore(moment(_post.date).add(5, 'days')) ? (
                 <div className="job-badge">
                   <MdNewReleases size={17} />
-                  Recent
+                  {localeInfo.isRussian ? 'Свежее' : 'Recent'}
                 </div>
               ) : (
                 ''
@@ -112,7 +116,7 @@ export default function Blog() {
     if (responseBody.blogPosts.length === 0) {
       setBlogPosts(
         <div className="notification">
-          There are no blog posts available based on your preferences.
+          {localeInfo.isRussian ? 'Нет ни одной записи в блоге, основанной на ваших предпочтениях.' : 'There are no blog posts available based on your preferences.'}
         </div>
       )
       return
@@ -133,7 +137,7 @@ export default function Blog() {
               moment().isBefore(moment(_post.postDate).add(5, 'days')) ? (
                 <div className="job-badge">
                   <MdNewReleases size={17} />
-                  Recent
+                  {localeInfo.isRussian ? 'Свежее' : 'Recent'}
                 </div>
               ) : (
                 ''
@@ -186,7 +190,7 @@ export default function Blog() {
         )
 
         if (httpResponse.status !== 200) {
-          setBlogPosts('Unable to fetch the blogs.')
+          setBlogPosts(localeInfo.isRussian ? 'Не удалось получить записи из блога.' : 'Unable to fetch the blog posts.')
           return
         }
 
@@ -204,7 +208,7 @@ export default function Blog() {
         presentBlog()
       } catch (error) {
         console.error(
-          'Encountered an unexpected error whilst populating the blogs:',
+          'Encountered an unexpected error whilst populating the blog posts:',
           error
         )
       }
@@ -220,7 +224,7 @@ export default function Blog() {
         )
 
         if (httpResponse.status !== 200) {
-          setAvailableFilters('Unable to fetch filters.')
+          setAvailableFilters(localeInfo.isRussian ? 'Не удалось получить поисковые фильтры.' : 'Unable to fetch filters.')
           return
         }
 
@@ -228,7 +232,7 @@ export default function Blog() {
         if (jsonResponse.blogPosts.length === 0) {
           setAvailableFilters(
             <div className="notification">
-              <i>There are currently no filters available.</i>
+              <i>{localeInfo.isRussian ? 'В настоящее время поисковые фильтры не доступны.' : 'There are currently no filters available.'}</i>
             </div>
           )
           return
@@ -258,7 +262,7 @@ export default function Blog() {
     <>
       <div className="flex flex-col md:flex-row bg-default w-full h-full border border-color-default rounded-xl">
         <div className="flex bg-default-darkl flex-col border-b md:border-r md:border-b-0 border-color-default md:w-1/5 p-3">
-          <span>Search:</span>
+          <span>{localeInfo.isRussian ? 'Поиск' : 'Search'}:</span>
           <input
             value={searchPrompt}
             onChange={(e) => {
@@ -267,7 +271,7 @@ export default function Blog() {
             className="bg-default-dark border border-color-default rounded p-1"
           ></input>
           <hr className="border-color-default mt-2 mb-2" />
-          <span>Filters:</span>
+          <span>{localeInfo.isRussian ? 'Фильтры' : 'Filters'}:</span>
           <div className="flex flex-col gap-1">
             {availableFilters ?? (
               <div className="notification">

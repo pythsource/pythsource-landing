@@ -1,11 +1,15 @@
 import { MdCalendarMonth } from 'react-icons/md'
-import { changeTitle } from '../main'
+import {changeTitle, parseLocale} from '../main'
 import { FaGithub } from 'react-icons/fa'
 import ProjectEntry from '../components/project_entry'
 import hfactions from '../assets/images/hfactions_title.png'
+import { useParams } from 'react-router'
 
 export default function Projects() {
-  changeTitle('Projects')
+  const params = useParams()
+  const localeInfo = parseLocale(params['lang'])
+
+  changeTitle(localeInfo.isRussian ? 'Проекты' : 'Projects')
 
   return (
     <>
@@ -15,14 +19,14 @@ export default function Projects() {
             <div className="flex flex-col text-center items-center border-b border-color-default mb-3">
               <h1 className="text-2xl">Data Point</h1>
               <h2 className="text-lg text-dark italic">
-                A universe used by PythSource to develop different multimedia
-                projects. Constantly expanding.
+                {localeInfo.isRussian ? 'Вселенная, используемая PythSource для разработки различных мультимедийных проектов. Постоянно расширяется.' : 'A universe used by PythSource to develop different multimedia \
+                projects. Constantly expanding.'}
               </h2>
             </div>
             <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 title="Global Information Repository"
-                description="A wiki for the Data Point project, taken from the perspective of the ITREWN."
+                description={localeInfo.isRussian ? 'Вики-проект для Data Point, взятый с точки зрения МСОМЦ.' : 'A wiki for the Data Point project, taken from the perspective of the ITREWN.'}
                 links={
                   <>
                     <MdCalendarMonth size={25} /> TBA
@@ -31,7 +35,7 @@ export default function Projects() {
               />
               <ProjectEntry
                 title="Project Seen"
-                description="A Source™ modification, depicting the events of the Celas' Revolution."
+                description={localeInfo.isRussian ? 'Source™ модификация, изображающая события революции в Целасе.' : 'A Source™ modification, depicting the events of the Celas\' Revolution.'}
                 links={
                   <>
                     <MdCalendarMonth size={25} /> TBA
@@ -44,15 +48,15 @@ export default function Projects() {
             <div className="flex text-center flex-col items-center border-b border-color-default mb-3">
               <h1 className="text-2xl">World Factions</h1>
               <h2 className="text-lg text-dark italic">
-                A scrapped universe previously used by PythSource. A predecessor
-                to Data Point.
+                {localeInfo.isRussian ? 'Заброшенная вселенная, ранее использовавшаяся PythSource. Предшественница Data Point.' : 'A scrapped universe previously used by PythSource. A predecessor \
+                to Data Point.'}
               </h2>
             </div>
             <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 imgSrc={hfactions}
                 title="HFactions"
-                description="A Hearts Of Iron IV modification, depicting the events of World Factions from 2019 to 2021."
+                description={localeInfo.isRussian ? 'Модификация для Hearts Of Iron IV, изображающая события World Factions с 2019 по 2021 год.' : 'A Hearts Of Iron IV modification, depicting the events of World Factions from 2019 to 2021.'}
                 links={
                   <>
                     <a href="https://github.com/pythsource/HFactions">
@@ -65,15 +69,15 @@ export default function Projects() {
           </div>
           <div className="flex flex-col">
             <div className="flex text-center flex-col items-center border-b border-color-default mb-3">
-              <h1 className="text-2xl">Miscellaneous Projects</h1>
+              <h1 className="text-2xl">{localeInfo.isRussian ? 'Другие проекты' : 'Miscellaneous Projects'}</h1>
               <h2 className="text-lg text-dark italic">
-                Projects that don't fit into any other categories.
+                {localeInfo.isRussian ? 'Проекты, которые не вписываются ни в какие другие категории.' : 'Projects that don\'t fit into any other categories.'}
               </h2>
             </div>
             <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
                 title="ZS-Navmeshes"
-                description="Additional navmeshes to be used with D3Bot - a Zombie Survival addon for Garry's Mod."
+                description={localeInfo.isRussian ? 'Дополнительные navmesh\'и для использования с D3Bot - аддоном для Zombie Survival режима в Garry\'s Mod.' : 'Additional navmeshes to be used with D3Bot - a Zombie Survival addon for Garry\'s Mod.'}
                 links={
                   <>
                     <a href="https://github.com/pythsource/ZS-Navmeshes">
