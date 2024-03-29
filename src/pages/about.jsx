@@ -9,8 +9,8 @@ function DataPointLogo() {
     <svg
       className="DPLogo"
       id="outputsvg"
-      width="400.3627"
-      height="50.74036"
+      width="300"
+      height="50"
       viewBox="0 0 14933.627 2757.4036"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

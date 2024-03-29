@@ -339,3 +339,15 @@ $default-text-highlight: #e0b98d;
     max-width: unset;
   }
 }
+
+@media (max-width: 375px) {
+  .page-header {
+    font-size: x-small;
+  }
+}
+
+@media (max-width: 320px) {
+  .page-header {
+    font-size: xx-small;
+  }
+}
