@@ -3,14 +3,14 @@ export const formatTitle = (pageName) => {
 }
 
 export const parseLocale = (languageCode) => {
-  if (languageCode && languageCode[0] === 'ru') {
+  if (languageCode === 'ru') {
     return {
-      code: languageCode[0],
+      code: languageCode,
       isRussian: true,
     }
   } else {
     return {
-      code: '',
+      code: 'en',
       isRussian: false,
     }
   }

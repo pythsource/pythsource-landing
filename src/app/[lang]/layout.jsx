@@ -8,6 +8,10 @@ import ru_flag from '../../assets/images/ru_flag.png'
 import { FaGitlab, FaGithub } from 'react-icons/fa'
 import { MdAlternateEmail } from 'react-icons/md'
 
+export const metadata = {
+  title: 'PythSource'
+}
+
 export default function RootLayout({ params, children }) {
   const localeInfo = parseLocale(params['lang']);
 
@@ -15,7 +19,6 @@ export default function RootLayout({ params, children }) {
     <html lang="en" className='bg-default text-default' prefix='og: https://ogp.me/ns#'>
       <head>
         <link rel='canonical' href='https://pythsource.com'/>
-        <title>Shit...</title>
       </head>
       <body>
         <div id='root'>

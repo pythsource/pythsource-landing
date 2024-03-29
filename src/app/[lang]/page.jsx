@@ -7,7 +7,7 @@ import hfactions from '@/assets/images/hfactions_presentation.jpg'
 
 export default function Main({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  console.log(localeInfo)
+  console.log(params)
 
   return (
     <>
