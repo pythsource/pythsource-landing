@@ -1,7 +1,7 @@
 import { TypeAnimation } from 'react-type-animation'
 import hfactions from '../assets/images/hfactions_presentation.jpg'
 import { useParams } from 'react-router'
-import { parseLocale } from '../main.jsx'
+import { MetaHead, parseLocale } from '../main.jsx'
 
 export default function Home() {
     const params = useParams()
@@ -9,6 +9,7 @@ export default function Home() {
 
   return (
     <>
+      <MetaHead description={localeInfo.isRussian ? 'PythSource - небольшая команда, занимающаяся разработкой программного обеспечения/игр. Основана в 2018 году.' : 'PythSource is a small team that does software/game development. Founded in 2018.'} title='PythSource' />
       <div className="home-row">
         <div className="home-left">
           <div className="home-text">

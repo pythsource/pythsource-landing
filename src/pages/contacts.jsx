@@ -1,16 +1,19 @@
 import { FaGithub, FaGitlab, FaJira, FaYoutube } from 'react-icons/fa'
-import {changeTitle, parseLocale} from '../main'
+import {formatTitle, MetaHead, parseLocale} from '../main'
 import { MdAlternateEmail, MdGamepad } from 'react-icons/md'
 import { useParams } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 export default function Contacts() {
   const params = useParams()
   const localeInfo = parseLocale(params['lang'])
 
-  changeTitle(localeInfo.isRussian ? 'Контакты' : 'Contacts')
-
   return (
     <>
+      <MetaHead description={localeInfo.isRussian ? 'Все официальные контакты PythSource: страницы в социальных сетях, адрес электронной почты и т.д.' : 'All official PythSource contacts: social pages, e-mail address and etc.'} title={formatTitle(localeInfo.isRussian ? 'Контакты' : 'Contacts')} />
+      <Helmet>
+        <title>{formatTitle(localeInfo.isRussian ? 'Контакты' : 'Contacts')}</title>
+      </Helmet>
       <div className="w-full h-full">
         <div className="flex flex-col">
           <div className="flex">

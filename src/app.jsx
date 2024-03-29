@@ -17,14 +17,15 @@ export default function App({ children }) {
         <header className="page-header border-color-default bg-default-dark">
           <a href={`/${localeInfo.code}`} className="logo-link logo-animation">
             <img
-              className="header-logo"
-              alt="PythSource logo"
-              src={no_text}
+                className="header-logo"
+                alt="PythSource logo"
+                src={no_text}
             ></img>
             <h1 className="font-bold">PythSource</h1>
           </a>
           <div className="link-list">
-            <a id="about" href={`/${localeInfo.code ? localeInfo.code + '/' : ''}about`} className="header-link transition">
+            <a id="about" href={`/${localeInfo.code ? localeInfo.code + '/' : ''}about`}
+               className="header-link transition">
               {localeInfo.isRussian ? 'О команде' : 'About'}
             </a>
             <a id="blog" href={`/${localeInfo.code ? localeInfo.code + '/' : ''}blog`} className="header-link transition">

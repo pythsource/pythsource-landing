@@ -1,5 +1,6 @@
-import { changeTitle, parseLocale } from '../main.jsx'
+import {formatTitle, MetaHead, parseLocale} from '../main.jsx'
 import { useParams } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 function ServicesPage() {
     return (
@@ -66,7 +67,13 @@ export default function Services() {
     const params = useParams()
     const localeInfo = parseLocale(params['lang'])
 
-    changeTitle(localeInfo.isRussian ? 'Услуги' : 'Services')
-
-    return localeInfo.isRussian ? <ServicesPage/> : <UnavailablePage/>
+    return (
+        <>
+            <MetaHead description={localeInfo.isRussian ? 'Официальный список доступных аутсорсинговых услуг от PythSource. Веб-разработка, разработка игр и многое другое!' : 'An official list of available outsourcing services from PythSource. Web development, game development and more!'} title={formatTitle(localeInfo.isRussian ? 'Услуги' : 'Services')} />
+            <Helmet>
+                <title>{formatTitle(localeInfo.isRussian ? 'Услуги' : 'Services')}</title>
+            </Helmet>
+            {localeInfo.isRussian ? <ServicesPage/> : <UnavailablePage/>}
+        </>
+    )
 }

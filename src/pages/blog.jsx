@@ -1,15 +1,14 @@
-import { changeTitle, parseLocale } from '../main'
+import { formatTitle, MetaHead, parseLocale } from '../main'
 import { useState, useEffect, useRef, Fragment } from 'react'
 import BlogPost from '../components/blog_post'
 import moment from 'moment'
 import { MdNewReleases } from 'react-icons/md'
 import { useParams } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 export default function Blog() {
   const params = useParams()
   const localeInfo = parseLocale(params['lang'])
-
-  changeTitle(localeInfo.isRussian ? 'Блог' : 'Blog')
 
   var rawPosts = useRef()
   const [blogPosts, setBlogPosts] = useState()
@@ -260,6 +259,10 @@ export default function Blog() {
 
   return (
     <>
+      <MetaHead description={localeInfo.isRussian ? 'Официальный блог PythSource. Новости, анонсы, дювлоги и многое другое.' : 'PythSource\'s official blog page. General news, announcements, devlogs and more.'} title={formatTitle(localeInfo.isRussian ? 'Блог' : 'Blog')} />
+      <Helmet>
+        <title>{formatTitle(localeInfo.isRussian ? 'Блог' : 'Blog')}</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row bg-default w-full h-full border border-color-default rounded-xl">
         <div className="flex bg-default-darkl flex-col border-b md:border-r md:border-b-0 border-color-default md:w-1/5 p-3">
           <span>{localeInfo.isRussian ? 'Поиск' : 'Search'}:</span>

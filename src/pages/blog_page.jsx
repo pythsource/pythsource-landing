@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { changeTitle } from '../main'
+import {formatTitle, MetaHead} from '../main'
 import Markdown from 'react-markdown'
+import { Helmet } from 'react-helmet'
 
 export default function BlogPage() {
   const [blogContent, setBlogContent] = useState()
@@ -17,12 +18,11 @@ export default function BlogPage() {
       )
 
       const responseData = await response.json()
-      if (responseData.length == 0) {
+      if (responseData.length === 0) {
         setBlogContent('There was an issue fetching the blog\'s content.')
       }
 
       setBlogContent(responseData.blogPost.blogContent)
-      changeTitle(responseData.blogPost.blogTitle)
     } catch (error) {
       console.error('Error encountered:', error)
     }
@@ -34,6 +34,9 @@ export default function BlogPage() {
 
   return (
     <>
+      <Helmet>
+        <title>{formatTitle(pageParams.pageName)}</title>
+      </Helmet>
       <Markdown>
         {blogContent ?? (
           <div className="notification">

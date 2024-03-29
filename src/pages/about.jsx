@@ -1,8 +1,9 @@
-import { changeTitle, parseLocale } from '../main'
+import {formatTitle, MetaHead, parseLocale} from '../main'
 import world_factions from '../assets/images/world_factions.png'
 import { FaGithub } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
 import { useParams } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 function DataPointLogo() {
   return (
@@ -104,10 +105,12 @@ export default function About() {
   const params = useParams()
   const localeInfo = parseLocale(params['lang'])
 
-  changeTitle(localeInfo.isRussian ? 'О команде' : 'About')
-
   return (
     <>
+      <MetaHead description={localeInfo.isRussian ? 'Информационная страница об истории PythSource, членах команды и наиболее ценных проектах.' : 'An information page about PythSource\'s history, team members, and most valuable projects.'} title={formatTitle(localeInfo.isRussian ? 'О команде' : 'About')} />
+      <Helmet>
+        <title>{formatTitle(localeInfo.isRussian ? 'О команде' : 'About')}</title>
+      </Helmet>
       <div className="w-full h-full">
         <div className="flex flex-col w-full pl-5 pt-5 gap-10">
           <div>

@@ -1,15 +1,14 @@
-import { changeTitle, parseLocale } from '../main'
+import { formatTitle, MetaHead, parseLocale } from '../main'
 import { useEffect, useRef, useState, Fragment } from 'react'
 import JobListing from '../components/job_listing'
 import moment from 'moment'
 import { MdNewReleases } from 'react-icons/md'
 import { useParams } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 export default function Jobs() {
   const params = useParams()
   const localeInfo = parseLocale(params['lang'])
-
-  changeTitle(localeInfo.isRussian ? 'Вакансии' : 'Jobs')
 
   var rawPosts = useRef()
   const [jobPosts, setJobPosts] = useState()
@@ -271,6 +270,10 @@ export default function Jobs() {
 
   return (
     <>
+      <MetaHead description={localeInfo.isRussian ? 'Официальный список вакансий в PythSource.' : 'An official list of job openings in PythSource.'} title={formatTitle(localeInfo.isRussian ? 'Вакансии' : 'Jobs')} />
+      <Helmet>
+        <title>{formatTitle(localeInfo.isRussian ? 'Вакансии' : 'Jobs')}</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row bg-default w-full h-full border border-color-default rounded-xl">
         <div className="flex bg-default-darkl flex-col border-b md:border-r md:border-b-0 border-color-default md:w-1/5 p-3">
           <span>{localeInfo.isRussian ? 'Поиск' : 'Search'}:</span>

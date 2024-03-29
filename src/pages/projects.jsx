@@ -1,18 +1,21 @@
 import { MdCalendarMonth } from 'react-icons/md'
-import {changeTitle, parseLocale} from '../main'
+import {formatTitle, MetaHead, parseLocale} from '../main'
 import { FaGithub } from 'react-icons/fa'
 import ProjectEntry from '../components/project_entry'
 import hfactions from '../assets/images/hfactions_title.png'
 import { useParams } from 'react-router'
+import { Helmet } from 'react-helmet'
 
 export default function Projects() {
   const params = useParams()
   const localeInfo = parseLocale(params['lang'])
 
-  changeTitle(localeInfo.isRussian ? 'Проекты' : 'Projects')
-
   return (
     <>
+      <MetaHead description={localeInfo.isRussian ? 'Официальный список личных проектов PythSource: законченных и незаконченных.' : 'An official list of PythSource\'s personal projects: finished or unfinished.'} title={formatTitle(localeInfo.isRussian ? 'Проекты' : 'Projects')} />
+      <Helmet>
+        <title>{formatTitle(localeInfo.isRussian ? 'Проекты' : 'Projects')}</title>
+      </Helmet>
       <div className="w-full overflow-auto h-full">
         <div className="flex flex-col p-5 gap-5 bg-default-darkl border border-color-default rounded-md">
           <div className="flex flex-col">

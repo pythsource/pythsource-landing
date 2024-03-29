@@ -14,6 +14,8 @@ import Jobs from './pages/jobs'
 import Blog from './pages/blog'
 import BlogPage from './pages/blog_page'
 import Services from './pages/services.jsx'
+import { Helmet } from 'react-helmet'
+import PropTypes from 'prop-types'
 
 const router = createBrowserRouter([
   {
@@ -61,10 +63,8 @@ const router = createBrowserRouter([
   },
 ])
 
-export const changeTitle = (pageTitle, bare = false) => {
-  bare
-    ? (document.title = 'PythSource')
-    : (document.title = `PythSource - ${pageTitle}`)
+export const formatTitle = (pageName) => {
+  return `PythSource — ${pageName}`
 }
 
 export const parseLocale = (languageCode) => {
@@ -81,8 +81,53 @@ export const parseLocale = (languageCode) => {
   }
 }
 
+// SEO-important component
+export const MetaHead = ({ title, description }) => {
+  return (
+      <>
+        <Helmet>
+          <meta
+              name="description"
+              content={description}
+          />
+          <meta
+              name="twitter:image"
+              content="https://pythsource.com/images/pythsource_logo.png"
+          />
+          <meta name="twitter:site" content="@pythsource"/>
+          <meta name="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:title" content={title}/>
+          <meta
+              name="twitter:description"
+              content={description}
+          />
+          <meta
+              name="og:image"
+              content="https://pythsource.com/images/pythsource_logo.png"
+          />
+          <meta
+              name="og:image:alt"
+              content={description}
+          />
+          <meta name="og:site_name" content={title}/>
+          <meta name="og:type" content="homepage"/>
+          <meta name="og:title" content={title}/>
+          <meta name="og:url" content="https://pythsource.com"/>
+          <meta
+              name="og:description"
+              content={description}
+          />
+        </Helmet>
+      </>
+  )
+}
+MetaHead.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <React.StrictMode>
+      <RouterProvider router={router}/>
+    </React.StrictMode>
 )
