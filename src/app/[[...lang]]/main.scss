@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 $default-background: #181818;
 $default-background-dark: #0c0c0c;
 $default-background-darkl: #161616;
@@ -139,8 +143,8 @@ $default-text-highlight: #e0b98d;
 
 .transition {
   transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter;
+  text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+  backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }

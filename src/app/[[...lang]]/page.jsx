@@ -1,15 +1,16 @@
-import { TypeAnimation } from 'react-type-animation'
-import hfactions from '../assets/images/hfactions_presentation.jpg'
-import { useParams } from 'react-router'
-import { MetaHead, parseLocale } from '../main.jsx'
+'use client'
 
-export default function Home() {
-    const params = useParams()
-    const localeInfo = parseLocale(params['lang'])
+import { TypeAnimation } from 'react-type-animation'
+import { parseLocale } from '@/lib/utilities'
+import Image from 'next/image'
+import hfactions from '@/assets/images/hfactions_presentation.jpg'
+
+export default function Main({ params }) {
+  const localeInfo = parseLocale(params['lang'])
+  console.log(localeInfo)
 
   return (
     <>
-      <MetaHead description={localeInfo.isRussian ? 'PythSource - небольшая команда, занимающаяся разработкой программного обеспечения/игр. Основана в 2018 году.' : 'PythSource is a small team that does software/game development. Founded in 2018.'} title='PythSource' />
       <div className="home-row">
         <div className="home-left">
           <div className="home-text">
@@ -23,7 +24,7 @@ export default function Home() {
             <h2 className="home-subtitle">
               <TypeAnimation
                 sequence={[
-                    localeInfo.isRussian ? '> Разработка игр' : '> Game Development',
+                  localeInfo.isRussian ? '> Разработка игр' : '> Game Development',
                   2500,
                   localeInfo.isRussian ? '> Веб-разработка' : '> Web Development',
                   2500,
@@ -37,11 +38,11 @@ export default function Home() {
           </div>
         </div>
         <div className="home-right">
-          <img
+          <Image
             alt="A showcase of PythSource's projects"
             src={hfactions}
             className="home-background"
-          ></img>
+          ></Image>
           <div className="home-imagetext">
             <TypeAnimation
               sequence={['HFactions', 2500]}
@@ -52,5 +53,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }
