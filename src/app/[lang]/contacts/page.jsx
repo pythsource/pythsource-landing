@@ -1,9 +1,14 @@
-import { parseLocale } from '@/lib/utilities'
+import { formatTitle, MetadataTemplate, parseLocale } from '@/lib/utilities'
 import { MdAlternateEmail, MdGamepad } from 'react-icons/md'
 import { FaYoutube, FaGithub, FaGitlab, FaJira } from 'react-icons/fa'
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }]
+}
+
+export function generateMetadata({ params }) {
+  const localeInfo = parseLocale(params['lang'])
+  return MetadataTemplate(localeInfo.isRussian ? 'Все официальные контакты PythSource: страницы в социальных сетях, адрес электронной почты и т.д.' : 'All official PythSource contacts: social pages, e-mail address and etc.', formatTitle(localeInfo.isRussian ? 'Контакты' : 'Contacts'), localeInfo.isRussian)
 }
 
 export default function Main({ params }) {

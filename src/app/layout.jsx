@@ -1,13 +1,13 @@
-import './main.scss';
-import '@fontsource-variable/jetbrains-mono';
+import './main.scss'
+import '@fontsource-variable/jetbrains-mono'
 
-export const metadata= {
+export const metadata = {
   title: 'PythSource'
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='bg-default text-default' prefix='og: https://ogp.me/ns#'>
+    <html lang="en" className="bg-default text-default" prefix="og: https://ogp.me/ns#">
     <head>
       <link rel="canonical" href="https://pythsource.com" />
       <link rel="icon" href="/favicon.ico" />

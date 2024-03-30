@@ -1,7 +1,12 @@
-import { parseLocale } from '@/lib/utilities'
+import { formatTitle, MetadataTemplate, parseLocale } from '@/lib/utilities'
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }]
+}
+
+export function generateMetadata({ params }) {
+  const localeInfo = parseLocale(params['lang'])
+  return MetadataTemplate(localeInfo.isRussian ? 'Список доступных аутсорсинговых услуг от PythSource. Веб-разработка, разработка игр и многое другое!' : 'A list of available outsourcing services from PythSource. Web development, game development and more!', formatTitle(localeInfo.isRussian ? 'Услуги' : 'Services'), localeInfo.isRussian)
 }
 
 function ServicesPage() {

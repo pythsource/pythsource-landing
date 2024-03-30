@@ -1,10 +1,15 @@
-import { parseLocale } from '@/lib/utilities'
+import { formatTitle, MetadataTemplate, parseLocale } from '@/lib/utilities'
 import Image from 'next/image'
 import no_text from '../../assets/images/no_text.png'
 import us_flag from '../../assets/images/us_flag.png'
 import ru_flag from '../../assets/images/ru_flag.png'
 import { FaGitlab, FaGithub } from 'react-icons/fa'
 import { MdAlternateEmail } from 'react-icons/md'
+
+export function generateMetadata({ params }) {
+  const localeInfo = parseLocale(params['lang'])
+  return MetadataTemplate(localeInfo.isRussian ? 'PythSource - небольшая команда, занимающаяся разработкой программного обеспечения/игр. Основана в 2018 году.' : 'PythSource is a small team that does software/game development. Founded in 2018.', 'PythSource', localeInfo.isRussian)
+}
 
 export default function RootLayout({ params, children }) {
   const localeInfo = parseLocale(params['lang'])

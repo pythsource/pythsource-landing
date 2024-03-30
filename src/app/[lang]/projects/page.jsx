@@ -1,4 +1,4 @@
-import { parseLocale } from '@/lib/utilities'
+import { MetadataTemplate, formatTitle, parseLocale } from '@/lib/utilities'
 import ProjectEntry from '@/components/project_entry'
 import { MdCalendarMonth } from 'react-icons/md'
 import hfactions from '@/assets/images/hfactions_title.png'
@@ -6,6 +6,11 @@ import { FaGithub } from 'react-icons/fa'
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }]
+}
+
+export function generateMetadata({ params }) {
+  const localeInfo = parseLocale(params['lang'])
+  return MetadataTemplate(localeInfo.isRussian ? 'Список личных проектов PythSource: законченных и незаконченных.' : 'A list of PythSource\'s personal projects: finished or unfinished.', formatTitle(localeInfo.isRussian ? 'Проекты' : 'Projects'), localeInfo.isRussian)
 }
 
 export default function Main({ params }) {
