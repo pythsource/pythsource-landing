@@ -4,13 +4,46 @@
         <loc>https://pythsource.com/</loc>
     </url>
     <url>
-        <loc>https://pythsource.com/about</loc>
+        <loc>https://pythsource.com/en</loc>
     </url>
     <url>
-        <loc>https://pythsource.com/projects</loc>
+        <loc>https://pythsource.com/en/about</loc>
     </url>
     <url>
-        <loc>https://pythsource.com/contacts</loc>
+        <loc>https://pythsource.com/en/blog</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/en/projects</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/en/services</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/en/jobs</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/en/contacts</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru/about</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru/blog</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru/projects</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru/services</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru/jobs</loc>
+    </url>
+    <url>
+        <loc>https://pythsource.com/ru/contacts</loc>
     </url>
     <url>
         <loc>https://git.pythsource.com</loc>

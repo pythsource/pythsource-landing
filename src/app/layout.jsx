@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className='bg-default text-default' prefix='og: https://ogp.me/ns#'>
     <head>
       <link rel="canonical" href="https://pythsource.com" />
-      <link rel="icon" href="/images/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" />
     </head>
     <body>
     <div id="root">{children}</div>
