@@ -69,7 +69,7 @@ export default function RootLayout({ params, children }) {
             <footer className="page-footer border-color-default bg-default-dark text-footer">
               <div>© {new Date().getFullYear()} PythSource</div>
               <div className="link-list_footer">
-                <a href="https://pythsource.com">
+                <a href="https://pythsource.com/en">
                   <Image alt='US Flag' src={us_flag} className='h-3.5'></Image>
                 </a>
                 <a href="https://pythsource.com/ru">

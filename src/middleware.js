@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server'
 
 export function middleware(request) {
-  const originalUrl = request.nextUrl.clone()
-  originalUrl.pathname = 'en'
-  return NextResponse.redirect(originalUrl)
+  let url = request.nextUrl.clone()
+  if (url.pathname.startsWith('/en') || url.pathname.startsWith('/ru')) return
+
+  url.pathname = `/en${url.pathname}`
+  return NextResponse.redirect(url)
 }
 
 export const config = {
-  matcher: '/'
+  matcher: ['/((?!_next).*)']
 }
