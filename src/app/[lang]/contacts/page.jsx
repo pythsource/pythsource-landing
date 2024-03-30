@@ -2,6 +2,10 @@ import { parseLocale } from '@/lib/utilities'
 import { MdAlternateEmail, MdGamepad } from 'react-icons/md'
 import { FaYoutube, FaGithub, FaGitlab, FaJira } from 'react-icons/fa'
 
+export function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'ru' }]
+}
+
 export default function Main({ params }) {
   const localeInfo = parseLocale(params['lang'])
 

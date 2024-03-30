@@ -58,10 +58,10 @@ export default function RootLayout({ params, children }) {
         <div>© {new Date().getFullYear()} PythSource</div>
         <div className="link-list_footer">
           <a href="https://pythsource.com/en">
-            <Image alt="US Flag" src={us_flag} className="h-3.5"></Image>
+            <Image alt="US Flag" src={us_flag}></Image>
           </a>
           <a href="https://pythsource.com/ru">
-            <Image alt="Russian Flag" src={ru_flag} className="h-3.5"></Image>
+            <Image alt="Russian Flag" src={ru_flag}></Image>
           </a>
           <a href="https://git.pythsource.com/explore">
             <FaGitlab size={25} />

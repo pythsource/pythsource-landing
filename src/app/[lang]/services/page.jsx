@@ -1,5 +1,9 @@
 import { parseLocale } from '@/lib/utilities'
 
+export function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'ru' }]
+}
+
 function ServicesPage() {
   return (
     <>

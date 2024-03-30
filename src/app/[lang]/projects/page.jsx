@@ -4,6 +4,10 @@ import { MdCalendarMonth } from 'react-icons/md'
 import hfactions from '@/assets/images/hfactions_title.png'
 import { FaGithub } from 'react-icons/fa'
 
+export function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'ru' }]
+}
+
 export default function Main({ params }) {
   const localeInfo = parseLocale(params['lang'])
 
