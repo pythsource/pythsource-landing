@@ -6,7 +6,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'Список доступных аутсорсинговых услуг от PythSource. Веб-разработка, разработка игр и многое другое!' : 'A list of available outsourcing services from PythSource. Web development, game development and more!', formatTitle(localeInfo.isRussian ? 'Услуги' : 'Services'), localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'Удаленный IT-аутсорсинг от PythSource. Разработка сайтов, игр, специализированного ПО; настройка и аудит Linux-серверов, разработка IT-инфраструктуры; переводы любого класса.' : 'Remote IT outsourcing from PythSource. Web development, game development, development of specialised software; Linux server configuration and auditing, IT infrastructure development; translations of any type.', formatTitle(localeInfo.isRussian ? 'IT-услуги' : 'IT Services'), localeInfo.isRussian)
 }
 
 function ServicesPage() {
@@ -23,10 +23,10 @@ function ServicesPage() {
           <div className='flex flex-col gap-2 overflow-auto border border-color-default p-1'>
             <div className='border border-color-default p-3 bg-default-darkl'>
               <h1 className='font-bold text-xl'>Разработка сайтов</h1>
-              <article className='text-dark'>Лёгкой, средней сложности. React, Node.js, ASP.NET, HTML.
+              <article className='text-dark'>Лёгкой, средней сложности. React, Next, Node.js, ASP.NET.
               </article>
               <div className='mt-3 flex gap-2'><h2 className='font-bold'>Средняя стоимость:</h2><p
-                className='border-b border-green-600'>от 200₽</p></div>
+                className='border-b border-green-600'>от 150₽</p></div>
             </div>
             <div className='border border-color-default p-3 bg-default-darkl'>
               <h1 className='font-bold text-xl'>Разработка игр</h1>
@@ -38,18 +38,17 @@ function ServicesPage() {
             <div className='border border-color-default p-3 bg-default-darkl'>
               <h1 className='font-bold text-xl'>Системное администрирование</h1>
               <article className='text-dark'>Настройка Linux серверов, исправление сбоев, ошибок.
-                Модернизация серверного ПО.
+                Модернизация серверного ПО. IT-инфраструктура.
               </article>
               <div className='mt-3 flex gap-2'><h2 className='font-bold'>Средняя стоимость:</h2><p
-                className='border-b border-green-600'>от 150₽</p></div>
+                className='border-b border-green-600'>от 125₽</p></div>
             </div>
             <div className='border border-color-default p-3 bg-default-darkl'>
               <h1 className='font-bold text-xl'>Переводы RU{'<=>'}ENG</h1>
-              <article className='text-dark'>Переводы любых материалов (аудио, видео, тексты). Технические
-                переводы.
+              <article className='text-dark'>Переводы любых материалов (аудио, видео, тексты). Технические переводы.
               </article>
               <div className='mt-3 flex gap-2'><h2 className='font-bold'>Средняя стоимость:</h2><p
-                className='border-b border-green-600'>от 115₽</p></div>
+                className='border-b border-green-600'>от 100₽</p></div>
             </div>
           </div>
         </div>
