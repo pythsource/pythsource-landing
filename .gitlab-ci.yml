@@ -1,20 +1,9 @@
 stages:
-  - build
   - lint
-
-build:
-  tags:
-    - host
-  image: node:latest
-  stage: build
-  script:
-    - npm install
-    - npm run build
 
 lint:
   tags:
     - host
-  needs: ['build']
   image: node:latest
   stage: lint
   script:
