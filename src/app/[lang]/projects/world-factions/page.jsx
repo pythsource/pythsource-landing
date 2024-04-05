@@ -46,7 +46,7 @@ export default function Main({ params }) {
               </article>
             </div>
           </div>
-          <div className='text-center w-full border-t border-color-default p-5 italic'>
+          <div className='text-center w-full border-t border-color-default p-5 italic font-bold'>
             {localeInfo.isRussian ? <p>Отдельное спасибо бывшим участникам World Factions, среди которых: IDEXV, URAKOLOUY5, Lomonosik, BruhAn, DisKripNeity/DEZONEIDZHI/Estpell, Vuldemar, LaXID (косвенный вклад) и другие.</p> : <p>Special thanks to former World Factions members, which include: IDEXV, URAKOLOUY5, Lomonosik, BruhAn, DisKripNeity/DEZONEIDZHI/Estpell, Vuldemar, LaXID (indirect contribution) and others.</p>}
           </div>
         </div>
