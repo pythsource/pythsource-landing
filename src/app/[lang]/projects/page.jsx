@@ -22,9 +22,9 @@ export default function Main({ params }) {
         <div className="flex flex-col p-5 gap-5 bg-default-darkl border border-color-default rounded-md">
           <div className="flex flex-col">
             <div className="flex flex-col text-center items-center border-b border-color-default mb-3">
-              <h1 className="text-2xl">Data Point</h1>
+              <h1 className="text-2xl"><a className='text-link' href={`/${localeInfo.code ? localeInfo.code + '/' : ''}projects/data-point`}>Data Point</a></h1>
               <h2 className="text-lg text-dark italic">
-                {localeInfo.isRussian ? 'Вселенная, используемая PythSource для разработки различных мультимедийных проектов. Постоянно расширяется.' : 'A universe used by PythSource to develop different multimedia \
+                {localeInfo.isRussian ? 'Вселенная, используемая PythSource для разработки различных мультимедийных проектов. Постоянно расширяется.' : 'A universe used by PythSource to develop various multimedia \
                 projects. Constantly expanding.'}
               </h2>
             </div>
@@ -51,7 +51,7 @@ export default function Main({ params }) {
           </div>
           <div className="flex flex-col">
             <div className="flex text-center flex-col items-center border-b border-color-default mb-3">
-              <h1 className="text-2xl">World Factions</h1>
+              <h1 className="text-2xl"><a className='text-link' href={`/${localeInfo.code ? localeInfo.code + '/' : ''}projects/world-factions`}>World Factions</a></h1>
               <h2 className="text-lg text-dark italic">
                 {localeInfo.isRussian ? 'Заброшенная вселенная, ранее использовавшаяся PythSource. Предшественница Data Point.' : 'A scrapped universe previously used by PythSource. A predecessor \
                 to Data Point.'}
