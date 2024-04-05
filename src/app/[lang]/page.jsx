@@ -44,7 +44,7 @@ export default function Main({ params }) {
           ></Image>
           <div className="home-imagetext">
             <TypeAnimation
-              sequence={['HFactions', 2500]}
+              sequence={[localeInfo.isRussian ? 'Изображение титульного экрана из HFactions' : 'A title screen image from HFactions', 2500]}
               speed={200}
               repeat={Infinity}
             />

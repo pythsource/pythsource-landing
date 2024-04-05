@@ -14,6 +14,10 @@ $default-text-dark: #8d8d8d;
 $default-text-link: #648daf;
 $default-text-highlight: #e0b98d;
 
+b {
+  font-weight: bold;
+}
+
 .bg-default {
   background-color: $default-background;
 }

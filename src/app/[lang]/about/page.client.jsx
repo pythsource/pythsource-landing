@@ -135,6 +135,7 @@ export default function AboutClient({ params }) {
                 <Image
                   className="w-24 rounded-full"
                   src={urako_avatar}
+                  alt="URAKOLOUY5's avatar image"
                 ></Image>
                 <div className="flex justify-center flex-col gap">
                   <p>URAKOLOUY5</p>
@@ -151,6 +152,7 @@ export default function AboutClient({ params }) {
                 <Image
                   className="w-24 rounded-full"
                   src={idexv_avatar}
+                  alt="IDEXV's avatar image"
                 ></Image>
                 <div className="flex justify-center flex-col gap">
                   <p>IDEXV</p>
@@ -175,8 +177,8 @@ export default function AboutClient({ params }) {
             </h1>
             <div
               className="flex flex-col md:flex-row gap-5 mt-2 items-center border-t border-b border-color-default pt-5 pb-5">
-              {DataPointLogo()}
-              <Image className="w-24" src={world_factions}></Image>
+              <a href={`/${localeInfo.code ? localeInfo.code + '/' : ''}projects/data-point`}>{DataPointLogo()}</a>
+              <a href={`/${localeInfo.code ? localeInfo.code + '/' : ''}projects/world-factions`}><Image className="w-24" alt='World Factions logo' src={world_factions}></Image></a>
             </div>
           </div>
         </div>

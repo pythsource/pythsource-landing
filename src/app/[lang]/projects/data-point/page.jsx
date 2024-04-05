@@ -1,5 +1,4 @@
 import { formatTitle, MetadataTemplate, parseLocale } from '@/lib/utilities'
-import Image from 'next/image'
 
 function DataPointLogo() {
   return (
@@ -103,7 +102,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'Data Point — вселенная, используемая PythSource для создания различных мультимедийных проектов.' : 'Data Point is a universe used by PythSource to develop various multimedia projects.', formatTitle('Data Point'), localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'Data Point — мультимедийный проект-вселенная, используемый PythSource для создания различного контента.' : 'Data Point is a multimedia project-universe used by PythSource to develop various content.', formatTitle('Data Point'), localeInfo.isRussian)
 }
 
 export default function Main({ params }) {
@@ -112,14 +111,20 @@ export default function Main({ params }) {
   return (
     <>
       <div className='w-full h-full'>
-        <div className='flex flex-col items-center slide-top'>
+        <div className='flex flex-col items-center slide-top gap-2'>
           {DataPointLogo()}
-          <div className='flex flex-col md:flex-row w-full justify-center items-center'>
-            <div className='p-5 border-r border-color-default'>
-              A universe, set in a fictional world by the name of Welloterra.
+          <div className='flex flex-col md:flex-row w-full justify-between items-center'>
+            <div className='p-5 w-full border-b md:border-b-0 md:border-r border-color-default'>
+              <article>
+                {localeInfo.isRussian ? <p><b>Проект Data Point</b> — большой мультимедийный проект, в настоящее время разрабатываемый PythSource. Создан в 2022 году, после упразднения вселенной World Factions. Основной целью проекта является создание основы для всех будущих интерактивных проектов PythSource.</p> : <p>The <b>Data Point Project</b> is a large multimedia project, currently being developed by PythSource. It
+                was created in 2022, after the dissolution of the World Factions universe. The main goal of the project
+                  is to create a foundation for all future PythSource interactive projects.</p>}
+              </article>
             </div>
-            <div className='p-5'>
-              sigma
+            <div className='p-5 w-full'>
+              <article>
+                {localeInfo.isRussian ? <p>Основное действие проекта происходит на вымышленной планете Элотерра. Проект является косвенным продолжением истории World Factions.</p> : <p>Set on a fictional planet of Welloterra, it depicts an indirect continuation of the World Factions story.</p>}
+              </article>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ export default function ProjectEntry({ imgSrc, title, description, links }) {
           <Image
             className="object-cover w-full h-24"
             src={imgSrc ? imgSrc : pythsource_logo}
+            alt='An interesting project-related image'
           ></Image>
         </div>
         <div className="basis-1/2 p-2 border-b border-color-default">
