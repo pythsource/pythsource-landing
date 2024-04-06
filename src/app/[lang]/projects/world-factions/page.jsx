@@ -8,7 +8,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'World Factions — упраздненная вселенная, ранее использовавшаяся PythSource для создания различных мультимедийных проектов. Вселенная также использовалась для проведения удаленных совместных мероприятий.' : 'World Factions is a discontinued universe previously used by PythSource to create various multimedia projects. The universe was also used for remote collaborative events.', formatTitle('World Factions'), localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'World Factions — упраздненная вселенная, ранее использовавшаяся PythSource для создания различных мультимедийных проектов. Вселенная также использовалась для проведения удаленных совместных мероприятий.' : 'World Factions is a discontinued universe previously used by PythSource to create various multimedia projects. The universe was also used for remote collaborative events.', formatTitle('World Factions'), localeInfo.isRussian, "/projects/world-factions")
 }
 
 export default function Main({ params }) {

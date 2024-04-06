@@ -16,10 +16,17 @@ export const parseLocale = (languageCode) => {
   }
 }
 
-export const MetadataTemplate = (_description, _title, _russianVer) => {
+export const MetadataTemplate = (_description, _title, _russianVer, _link) => {
   return {
     title: _title,
     description: _description,
+    alternates: {
+      canonical: _link,
+      languages: {
+        'en': `/en${_link === "/" ? "" : _link}`,
+        'ru': `/ru${_link === "/" ? "" : _link}`,
+      },
+    },
     twitter: {
       card: 'summary_large_image',
       title: _title,

@@ -10,7 +10,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'Список личных проектов PythSource: законченных и незаконченных.' : 'A list of PythSource\'s personal projects: finished or unfinished.', formatTitle(localeInfo.isRussian ? 'Проекты' : 'Projects'), localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'Список личных проектов PythSource: законченных и незаконченных.' : 'A list of PythSource\'s personal projects: finished or unfinished.', formatTitle(localeInfo.isRussian ? 'Проекты' : 'Projects'), localeInfo.isRussian, "/projects")
 }
 
 export default function Main({ params }) {

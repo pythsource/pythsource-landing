@@ -6,7 +6,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'Удаленный IT-аутсорсинг от PythSource. Разработка сайтов, игр, специализированного ПО; настройка и аудит Linux-серверов, разработка IT-инфраструктуры; переводы любого класса.' : 'Remote IT outsourcing from PythSource. Web development, game development, development of specialised software; Linux server configuration and auditing, IT infrastructure development; translations of any type.', formatTitle(localeInfo.isRussian ? 'IT-услуги' : 'IT Services'), localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'Удаленный IT-аутсорсинг от PythSource. Разработка сайтов, игр, специализированного ПО; настройка и аудит Linux-серверов, разработка IT-инфраструктуры; переводы любого класса.' : 'Remote IT outsourcing from PythSource. Web development, game development, development of specialised software; Linux server configuration and auditing, IT infrastructure development; translations of any type.', formatTitle(localeInfo.isRussian ? 'IT-услуги' : 'IT Services'), localeInfo.isRussian, "/services")
 }
 
 function ServicesPage() {

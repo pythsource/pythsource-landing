@@ -102,7 +102,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'Data Point — мультимедийный проект-вселенная, используемый PythSource для создания различного контента.' : 'Data Point is a multimedia project-universe used by PythSource to develop various content.', formatTitle('Data Point'), localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'Data Point — мультимедийный проект-вселенная, используемый PythSource для создания различного контента.' : 'Data Point is a multimedia project-universe used by PythSource to develop various content.', formatTitle('Data Point'), localeInfo.isRussian, "/projects/data-point")
 }
 
 export default function Main({ params }) {

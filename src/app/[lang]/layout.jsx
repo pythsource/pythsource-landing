@@ -8,7 +8,7 @@ import { MdAlternateEmail } from 'react-icons/md'
 
 export function generateMetadata({ params }) {
   const localeInfo = parseLocale(params['lang'])
-  return MetadataTemplate(localeInfo.isRussian ? 'PythSource - небольшая команда, занимающаяся разработкой программного обеспечения/игр. Основана в 2018 году.' : 'PythSource is a small team that does software/game development. Founded in 2018.', 'PythSource', localeInfo.isRussian)
+  return MetadataTemplate(localeInfo.isRussian ? 'PythSource - небольшая команда, занимающаяся разработкой программного обеспечения/игр. Основана в 2018 году.' : 'PythSource is a small team that does software/game development. Founded in 2018.', 'PythSource', localeInfo.isRussian, "/")
 }
 
 export default function RootLayout({ params, children }) {
