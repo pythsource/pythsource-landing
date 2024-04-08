@@ -22,7 +22,7 @@ export default function Main({ params }) {
           <div className='flex flex-col md:flex-row w-full justify-between items-center'>
             <div className='p-5 w-full border-b md:border-b-0 md:border-r border-color-default'>
               <article>
-                {localeInfo.isRussian ? <p><b>World Factions</b> — упраздненный совместный писательский проект, ранее использовавшийся PythSource для разработки различных мультимедийных проектов и организации удаленных совместных мероприятий. Проект был создан примерно в 2018 году, и был заброшен в 2022 году с созданием проекта <b>Data Point</b></p> : <p><b>World Factions</b> is a discontinued collaborative writing project, previously used by PythSource to
+                {localeInfo.isRussian ? <p><b>World Factions</b> — упраздненный совместный писательский проект, ранее использовавшийся PythSource для разработки различных мультимедийных проектов и организации удаленных совместных мероприятий. Проект был создан примерно в 2018 году, и был заброшен в 2022 году с созданием проекта <b>Data Point</b>.</p> : <p><b>World Factions</b> is a discontinued collaborative writing project, previously used by PythSource to
                 develop various multimedia content and to organise remote collaborative events. Created somewhere in
                   2018, it was then abandoned in 2022, with the creation of the <b>Data Point Project</b>.</p>}
               </article>
