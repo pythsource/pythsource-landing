@@ -41,10 +41,6 @@ export default function RootLayout({ params, children }) {
           >
             {localeInfo.isRussian ? 'Проекты' : 'Projects'}
           </a>
-          <a id="services" href={`/${localeInfo.code ? localeInfo.code + '/' : ''}services`}
-             className="header-link transition">
-            {localeInfo.isRussian ? 'Услуги' : 'Services'}
-          </a>
           <a id="jobs" href={`/${localeInfo.code ? localeInfo.code + '/' : ''}jobs`}
              className="header-link transition">
             {localeInfo.isRussian ? 'Вакансии' : 'Jobs'}
