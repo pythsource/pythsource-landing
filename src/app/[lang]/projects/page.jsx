@@ -40,7 +40,7 @@ export default function Main({ params }) {
               />
               <ProjectEntry
                 title="Project Seen"
-                description={localeInfo.isRussian ? 'Source™ модификация, изображающая события революции в Целасе.' : 'A Source™ modification, depicting the events of the Celas\' Revolution.'}
+                description={localeInfo.isRussian ? 'Игра, изображающая события революции в Целасе.' : 'A game that depicts the events of the Celas\' Revolution.'}
                 links={
                   <>
                     <MdCalendarMonth size={25} /> TBA
@@ -53,7 +53,7 @@ export default function Main({ params }) {
             <div className="flex text-center flex-col items-center border-b border-color-default mb-3">
               <h1 className="text-2xl"><a className='text-link' href={`/${localeInfo.code ? localeInfo.code + '/' : ''}projects/world-factions`}>World Factions</a></h1>
               <h2 className="text-lg text-dark italic">
-                {localeInfo.isRussian ? 'Заброшенная вселенная, ранее использовавшаяся PythSource. Предшественница Data Point.' : 'A scrapped universe previously used by PythSource. A predecessor \
+                {localeInfo.isRussian ? 'Упраздненная вселенная, ранее использовавшаяся PythSource. Предшественница Data Point.' : 'A scrapped universe previously used by PythSource. A predecessor \
                 to Data Point.'}
               </h2>
             </div>
