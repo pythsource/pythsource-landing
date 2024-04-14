@@ -7,5 +7,6 @@ lint:
   image: node:latest
   stage: lint
   script:
+    - cd frontend
     - npm install
     - npm run lint
