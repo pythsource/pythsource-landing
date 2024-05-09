@@ -2,7 +2,8 @@ import { MetadataTemplate, formatTitle, parseLocale } from '@/lib/utilities'
 import ProjectEntry from '@/components/project_entry'
 import { MdCalendarMonth } from 'react-icons/md'
 import hfactions from '@/assets/images/hfactions_title.png'
-import { FaGithub } from 'react-icons/fa'
+import bof from '@/assets/images/bof_presentation.jpg'
+import { FaGithub, FaSteam } from 'react-icons/fa'
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }]
@@ -30,20 +31,14 @@ export default function Main({ params }) {
             </div>
             <div className="flex logo-animation md:items-baseline flex-col md:flex-row gap-1.5">
               <ProjectEntry
-                title="Global Information Repository"
-                description={localeInfo.isRussian ? 'Вики-проект для Data Point, взятый с точки зрения МСОМЦ.' : 'A wiki for the Data Point project, taken from the perspective of the ITREWN.'}
+                imgSrc={bof}
+                title="Bound by Fate"
+                description={localeInfo.isRussian ? 'Кампания для Arma 3, повествующая о событиях ISFB в Тер\'эльтане.' : 'An Arma 3 campaign that depicts the events of the ISFB in Ter\'eltan.'}
                 links={
                   <>
-                    <MdCalendarMonth size={25} /> TBA
-                  </>
-                }
-              />
-              <ProjectEntry
-                title="Project Seen"
-                description={localeInfo.isRussian ? 'Игра, изображающая события революции в Целасе.' : 'A game that depicts the events of the Celas\' Revolution.'}
-                links={
-                  <>
-                    <MdCalendarMonth size={25} /> TBA
+                    <a href="https://steamcommunity.com/workshop/filedetails/?id=3240072942">
+                      <FaSteam size={30} />
+                    </a>
                   </>
                 }
               />

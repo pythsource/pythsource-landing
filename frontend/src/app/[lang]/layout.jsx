@@ -64,15 +64,6 @@ export default function RootLayout({ params, children }) {
           <a href="https://pythsource.com/ru">
             <Image alt="Russian Flag" src={ru_flag}></Image>
           </a>
-          <a href="https://git.pythsource.com/explore">
-            <FaGitlab size={25} />
-          </a>
-          <a href="https://github.com/pythsource">
-            <FaGithub size={25} />
-          </a>
-          <a href="mailto:pythsource.official@gmail.com">
-            <MdAlternateEmail size={25} />
-          </a>
         </div>
       </footer>
     </div>

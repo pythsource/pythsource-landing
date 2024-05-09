@@ -1,6 +1,6 @@
 import { formatTitle, MetadataTemplate, parseLocale } from '@/lib/utilities'
 import { MdAlternateEmail, MdGamepad } from 'react-icons/md'
-import { FaYoutube, FaGithub, FaGitlab, FaJira } from 'react-icons/fa'
+import { FaYoutube, FaGithub, FaGitlab, FaJira, FaDiscord } from 'react-icons/fa'
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }]
@@ -59,6 +59,12 @@ export default function Main({ params }) {
                   href="https://www.moddb.com/company/pythsource"
                 >
                   <MdGamepad size={35} /> ModDB
+                </a>
+                <a
+                  className="flex gap-2 items-center"
+                  href="https://discord.gg/fvuHZgwTPp"
+                >
+                  <FaDiscord size={35} /> Discord
                 </a>
                 <h1 className="md:text-lg border-b border-color-default mb-1">
                   {localeInfo.isRussian ? 'Для технических вопросов' : 'For technical inquiries'}:
