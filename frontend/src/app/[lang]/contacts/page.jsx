@@ -75,12 +75,6 @@ export default function Main({ params }) {
                 >
                   <FaGitlab size={35} /> GitLab
                 </a>
-                <a
-                  className="flex gap-2 items-center"
-                  href="https://issues.pythsource.com"
-                >
-                  <FaJira size={35} /> Jira
-                </a>
               </div>
             </div>
           </div>
