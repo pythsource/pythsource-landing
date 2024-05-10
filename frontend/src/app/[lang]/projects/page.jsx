@@ -36,7 +36,7 @@ export default function Main({ params }) {
                 description={localeInfo.isRussian ? 'Кампания для Arma 3, повествующая о событиях ISFB в Тер\'эльтане.' : 'An Arma 3 campaign that depicts the events of the ISFB in Ter\'eltan.'}
                 links={
                   <>
-                    <a href="https://steamcommunity.com/workshop/filedetails/?id=3240072942">
+                    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3243498995">
                       <FaSteam size={30} />
                     </a>
                   </>
