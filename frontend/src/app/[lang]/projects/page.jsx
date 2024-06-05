@@ -1,9 +1,9 @@
 import { MetadataTemplate, formatTitle, parseLocale } from '@/lib/utilities'
 import ProjectEntry from '@/components/project_entry'
-import { MdCalendarMonth } from 'react-icons/md'
 import hfactions from '@/assets/images/hfactions_title.png'
 import bof from '@/assets/images/bof_presentation.jpg'
-import { FaGithub, FaSteam } from 'react-icons/fa'
+import vpd from '@/assets/images/vpd_presentation.png'
+import { FaGithub, FaGlobe, FaSteam } from 'react-icons/fa'
 
 export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ru' }]
@@ -38,6 +38,18 @@ export default function Main({ params }) {
                   <>
                     <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3243498995">
                       <FaSteam size={30} />
+                    </a>
+                  </>
+                }
+              />
+              <ProjectEntry
+                imgSrc={vpd}
+                title="Veritapedia"
+                description={localeInfo.isRussian ? 'Официальная «внутривселенская» википедия для Data Point.' : 'An official «in-universe» wiki for Data Point.'}
+                links={
+                  <>
+                    <a href="https://veritapedia.pythsource.com">
+                      <FaGlobe size={30} />
                     </a>
                   </>
                 }
